@@ -1,6 +1,8 @@
-﻿namespace tinker.Domain.Entities
+﻿using tinker.Domain.Entities.Common;
+
+namespace tinker.Domain.Entities
 {
-    public class Address
+    public class Address : BaseEntity
     {
         public string Title { get; set; }
         public string Description { get; set; }
