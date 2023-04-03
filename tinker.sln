@@ -6,18 +6,31 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6CAECB34-5E83-4C33-A591-25DCAE529375}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinker.Application", "tinker.Application\tinker.Application.csproj", "{49F82F50-813A-49DC-B871-469DF187F1B5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2B9BAC18-D702-4692-A8F8-4C7AA5D1DA19} = {2B9BAC18-D702-4692-A8F8-4C7AA5D1DA19}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinker.Domain", "tinker.Domain\tinker.Domain.csproj", "{2B9BAC18-D702-4692-A8F8-4C7AA5D1DA19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2171BA15-ED8B-4A25-9277-FF1726379989}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinker.Infrastructure", "tinker.Infrastructure\tinker.Infrastructure.csproj", "{7D0327A3-F860-4C10-9B7E-ADA66AEEE322}"
+	ProjectSection(ProjectDependencies) = postProject
+		{49F82F50-813A-49DC-B871-469DF187F1B5} = {49F82F50-813A-49DC-B871-469DF187F1B5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinker.Persistence", "tinker.Persistence\tinker.Persistence.csproj", "{6A8287AB-8D4D-4094-A9D4-9E85D5348867}"
+	ProjectSection(ProjectDependencies) = postProject
+		{49F82F50-813A-49DC-B871-469DF187F1B5} = {49F82F50-813A-49DC-B871-469DF187F1B5}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{03CFCFE1-7621-485D-851B-283EE024196E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinker.API", "tinker.API\tinker.API.csproj", "{85D67F24-F7EB-40EB-A5DC-EB206D84F3A4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{49F82F50-813A-49DC-B871-469DF187F1B5} = {49F82F50-813A-49DC-B871-469DF187F1B5}
+		{6A8287AB-8D4D-4094-A9D4-9E85D5348867} = {6A8287AB-8D4D-4094-A9D4-9E85D5348867}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

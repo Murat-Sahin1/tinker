@@ -1,0 +1,12 @@
+C:\Users\Voul\tinker\tinker\tinker.Domain\bin\Debug\net7.0\tinker.Domain.deps.json
+C:\Users\Voul\tinker\tinker\tinker.Domain\bin\Debug\net7.0\tinker.Domain.dll
+C:\Users\Voul\tinker\tinker\tinker.Domain\bin\Debug\net7.0\tinker.Domain.pdb
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.csproj.AssemblyReference.cache
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.AssemblyInfoInputs.cache
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.AssemblyInfo.cs
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.dll
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\refint\tinker.Domain.dll
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\tinker.Domain.pdb
+C:\Users\Voul\tinker\tinker\tinker.Domain\obj\Debug\net7.0\ref\tinker.Domain.dll

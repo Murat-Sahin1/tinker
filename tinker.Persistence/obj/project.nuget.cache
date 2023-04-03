@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "om3/XBa5+J94sgTAbsCM+vhUx2+lzDCVccPZM9kpTYY5SX9ITl03pyyAyul7P6jYRMrKVhqXipGebLBNRXOdMw==",
+  "dgSpecHash": "1ke2lMovmv6Fyuqvdcoo+uJw3Bm/NpqA3Xv/ZKakB6iP7goxYNNSYg+u0m1Ge7CAAOmSADhsbcubWIhoUBoP8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Voul\\tinker\\tinker\\tinker.Persistence\\tinker.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.4\\microsoft.entityframeworkcore.7.0.4.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.4\\microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.4\\microsoft.entityframeworkcore.analyzers.7.0.4.nupkg.sha512",
+    "C:\\Users\\Voul\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.4\\microsoft.entityframeworkcore.inmemory.7.0.4.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
