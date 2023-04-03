@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\tinker.Application\tinker.Application.csproj" />
     <ProjectReference Include="..\tinker.Domain\tinker.Domain.csproj" />
   </ItemGroup>
 
