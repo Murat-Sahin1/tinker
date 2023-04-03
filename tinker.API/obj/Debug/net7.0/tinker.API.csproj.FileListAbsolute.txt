@@ -38,3 +38,5 @@ C:\Users\Voul\tinker\tinker\tinker.API\bin\Debug\net7.0\tinker.Domain.dll
 C:\Users\Voul\tinker\tinker\tinker.API\bin\Debug\net7.0\tinker.Persistence.dll
 C:\Users\Voul\tinker\tinker\tinker.API\bin\Debug\net7.0\tinker.Persistence.pdb
 C:\Users\Voul\tinker\tinker\tinker.API\bin\Debug\net7.0\tinker.Domain.pdb
+C:\Users\Voul\tinker\tinker\tinker.API\bin\Debug\net7.0\tinker.Application.dll
+C:\Users\Voul\tinker\tinker\tinker.API\bin\Debug\net7.0\tinker.Application.pdb

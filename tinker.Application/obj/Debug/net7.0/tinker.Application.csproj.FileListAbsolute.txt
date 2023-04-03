@@ -10,3 +10,6 @@ C:\Users\Voul\tinker\tinker\tinker.Application\obj\Debug\net7.0\tinker.Applicati
 C:\Users\Voul\tinker\tinker\tinker.Application\obj\Debug\net7.0\refint\tinker.Application.dll
 C:\Users\Voul\tinker\tinker\tinker.Application\obj\Debug\net7.0\tinker.Application.pdb
 C:\Users\Voul\tinker\tinker\tinker.Application\obj\Debug\net7.0\ref\tinker.Application.dll
+C:\Users\Voul\tinker\tinker\tinker.Application\bin\Debug\net7.0\tinker.Domain.dll
+C:\Users\Voul\tinker\tinker\tinker.Application\bin\Debug\net7.0\tinker.Domain.pdb
+C:\Users\Voul\tinker\tinker\tinker.Application\obj\Debug\net7.0\tinker.Application.csproj.CopyComplete

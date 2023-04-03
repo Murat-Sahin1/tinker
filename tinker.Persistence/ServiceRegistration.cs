@@ -9,7 +9,7 @@ namespace tinker.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(Configuration.InMemoryConnectionString));
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(ConfigManager.InMemoryConnectionString));
         }
     }
 }
