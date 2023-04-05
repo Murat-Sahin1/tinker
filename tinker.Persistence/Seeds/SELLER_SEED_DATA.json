@@ -1,0 +1,28 @@
+[
+  {
+    "FirstName": "Arthur",
+    "LastName": "Waybacker",
+    "PhoneNumber": "3231414140",
+    "ShopName": "Reinforcement Market",
+    "Addresses": [
+      {
+        "City": "Texas",
+        "AddressDescription": "35 Road",
+        "Title": "Home"
+      }
+    ]
+  },
+  {
+    "FirstName": "Smithy",
+    "LastName": "Backall",
+    "PhoneNumber": "41234141",
+    "ShopName": "Visual AI Services",
+    "Addresses": [
+      {
+        "City": "Paris",
+        "AddressDescription": "Artada Village",
+        "Title": "Office"
+      }
+    ]
+  }
+]

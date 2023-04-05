@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xwUN/3yqshFUZ3mN342ezkcBs6jdcrhgC10asHQPz5FUHybd8YRVZHh/L3r/QLaVcH8Q869IbhNvOP/Bc4WVhg==",
+  "dgSpecHash": "I/aIEQooq7WW+zqG8+08Kn0TSCUJWdMA3aMZatH8omd38f+6KpZ4vX7Y17MaDaP57MFsx8OyRHA3TiMEKybFmQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Voul\\tinker\\tinker\\tinker.API\\tinker.API.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\Voul\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\Voul\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

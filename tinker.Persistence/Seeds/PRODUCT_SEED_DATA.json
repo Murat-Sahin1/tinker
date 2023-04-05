@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Cat and Dog Identificator",
+    "Description": "A model that simply detects dogs and cats and identifies them.",
+    "Images": [
+      {
+        "Url": "https://flxt.tmsimg.com/assets/p22041592_i_v13_aa.jpg"
+      }
+    ],
+    "Sold": 14,
+    "Status": "Active",
+    "Category": {
+      "Id": 2
+    },
+    "Price": 1831.72
+  },
+  {
+    "Name": "Chat Bot",
+    "Description": "Simple chat bot, ",
+    "Images": [
+      {
+        "Url": "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all"
+      }
+    ],
+    "Sold": 393,
+    "Status": "Active",
+    "Category": {
+      "Id": 3
+    },
+    "Price": 1831.72
+  }
+]

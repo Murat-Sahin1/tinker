@@ -10,7 +10,6 @@ namespace tinker.Domain.Entities
         [Required]
         public string LastName { get; set; }
         [Required]
-        public string Email { get; set; }
         public ICollection<Address> Addresses { get; set; }
     }
 }

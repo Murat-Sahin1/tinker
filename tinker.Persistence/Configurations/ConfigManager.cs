@@ -11,7 +11,9 @@ namespace tinker.Persistence.Configurations
     {
         static private string getBasePath()
         {
-            return Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/tinker.API");
+            return Path.Combine(
+        Directory.GetCurrentDirectory(),
+        @"../../tinker/tinker.API");
         }
         public static string InMemoryConnectionString
         {

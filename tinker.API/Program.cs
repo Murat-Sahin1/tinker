@@ -1,4 +1,6 @@
+using tinker.Application.Interfaces.Repositories;
 using tinker.Persistence;
+using tinker.Persistence.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,5 +27,22 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    try
+    {
+        var categoryRepository = services.GetService<ICategoryRepository>();
+
+        await DbInitializer.seedCategoryData(categoryRepository);
+
+    } catch (Exception ex)
+    {
+        Console.WriteLine("Exception occured while trying to get a service in Program.cs", ex.Message);
+        throw;
+    }
+}
 
 app.Run();

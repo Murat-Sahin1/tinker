@@ -25,5 +25,7 @@ namespace tinker.Application.Interfaces.Repositories
         Task<bool> RemoveById(int id);
         bool RemoveRange(List<T> entities);
         Task<bool> SaveAsync();
+        bool AnyElements();
+        bool EnsureCreation();
     }
 }

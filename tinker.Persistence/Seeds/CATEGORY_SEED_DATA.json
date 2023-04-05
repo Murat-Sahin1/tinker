@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "Reinforcement AI",
+    "Description": "Machine learning training method based on rewarding desired behaviors and/or punishing undesired ones."
+  },
+  {
+    "Name": "Computer Vision AI",
+    "Description": "Machine learning models that take image as the input."
+  },
+  {
+    "Name": "Language Processeing AI",
+    "Description": "Machine learning models that take image as the input."
+  }
+]

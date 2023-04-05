@@ -19,11 +19,12 @@ namespace tinker.Domain.Entities
         public int Sold { get; set; }
         [Required]
         public decimal Price { get; set; }
-        [Required]
+        public string SellerId { get; set; }
         public Seller Seller { get; set; }
         [Required]
+        public string CategoryId { get; set; }
+        [Required]
         public Category Category { get; set; }
-        public int InStock { get; set; }
         [Required]
         public ProductStatus ProductStatus { get; set; }
     }

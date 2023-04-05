@@ -15,3 +15,5 @@ C:\Users\Voul\tinker\tinker\tinker.Persistence\obj\Debug\net7.0\tinker.Persisten
 C:\Users\Voul\tinker\tinker\tinker.Persistence\obj\Debug\net7.0\ref\tinker.Persistence.dll
 C:\Users\Voul\tinker\tinker\tinker.Persistence\bin\Debug\net7.0\tinker.Application.dll
 C:\Users\Voul\tinker\tinker\tinker.Persistence\bin\Debug\net7.0\tinker.Application.pdb
+C:\Users\Voul\tinker\tinker\tinker.Persistence\bin\Debug\net7.0\tinker.Persistence.runtimeconfig.json
+C:\Users\Voul\tinker\tinker\tinker.Persistence\obj\Debug\net7.0\tinker.Persistence.genruntimeconfig.cache

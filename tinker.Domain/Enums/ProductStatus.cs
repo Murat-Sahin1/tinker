@@ -2,7 +2,7 @@
 {
     public enum ProductStatus
     {
-        active,
-        deactive
+        Active,
+        Deactive
     }
 }

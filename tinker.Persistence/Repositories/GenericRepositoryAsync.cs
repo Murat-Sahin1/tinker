@@ -95,5 +95,15 @@ namespace tinker.Persistence.Repositories
             await _appDbContext.SaveChangesAsync();
             return true;
         }
+        public bool AnyElements()
+        {
+            bool isSeeded = Table.Any();
+            return isSeeded;
+        }
+        public bool EnsureCreation()
+        {
+            bool isCreated = _appDbContext.Database.EnsureCreated();
+            return isCreated;
+        }
     }
 }
