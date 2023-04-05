@@ -1,14 +1,17 @@
 [
   {
-    "Name": "Reinforcement AI",
+    "CategoryID":  1,
+    "Name": "ReinforcementAI",
     "Description": "Machine learning training method based on rewarding desired behaviors and/or punishing undesired ones."
   },
   {
-    "Name": "Computer Vision AI",
+    "CategoryID": 2,
+    "Name": "ComputerVisionAI",
     "Description": "Machine learning models that take image as the input."
   },
   {
-    "Name": "Language Processeing AI",
+    "CategoryID": 3,
+    "Name": "LanguageProcesseingAI",
     "Description": "Machine learning models that take image as the input."
   }
 ]

@@ -31,7 +31,7 @@ namespace tinker.Persistence.Seeds
 
             try
             {
-                Console.WriteLine("Seeding Data...");
+                Console.WriteLine("Seeding Category Data...");
                 foreach (Category c in deserializedCategoryList)
                 {
                     await categoryRepository.InsertAsync(c);
@@ -40,10 +40,46 @@ namespace tinker.Persistence.Seeds
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error occured while seeding the data: ", ex.Message);
+                Console.WriteLine("Error occured while seeding the category data: ", ex.Message);
                 throw;
             }
-            Console.WriteLine("Seeding is complete.");
+            Console.WriteLine("Seeding the category data is complete.");
+            return true; // seeding is complete.
+        }
+        public static async Task<bool> seedProductData(IProductRepository productRepository, ICategoryRepository categoryRepository)
+        {
+            if (productRepository.EnsureCreation())
+            {
+                if (productRepository.AnyElements())
+                {
+                    return true; // already seeded.
+                }
+            }
+
+            var productData = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), @"../tinker.Persistence/Seeds/PRODUCT_SEED_DATA.json"));
+            var deserializedProductList = JsonConvert.DeserializeObject<List<Product>>(productData);
+
+            try
+            {
+                Console.WriteLine("Seeding Product Data...");
+                foreach (Product p in deserializedProductList)
+                {
+                    var category = await categoryRepository.GetByIdAsync(p.Category.ID);
+                    p.Category = category;
+
+
+                    await productRepository.InsertAsync(p);
+                    await productRepository.SaveAsync();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occured while seeding the product data: ", ex.Message);
+                throw;
+            }
+            Console.WriteLine("Seeding the product data is complete.");
             return true; // seeding is complete.
         }
     }

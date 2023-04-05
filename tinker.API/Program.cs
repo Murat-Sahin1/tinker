@@ -13,6 +13,9 @@ builder.Services.AddPersistenceServices();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,8 +38,10 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var categoryRepository = services.GetService<ICategoryRepository>();
+        var productRepository = services.GetService<IProductRepository>();
 
         await DbInitializer.seedCategoryData(categoryRepository);
+        await DbInitializer.seedProductData(productRepository, categoryRepository);
 
     } catch (Exception ex)
     {

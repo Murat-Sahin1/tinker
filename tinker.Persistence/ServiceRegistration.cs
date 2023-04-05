@@ -17,6 +17,7 @@ namespace tinker.Persistence
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ISellerRepository, SellerRepository>();
+
         }
     }
 }
