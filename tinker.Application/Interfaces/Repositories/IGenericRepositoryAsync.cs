@@ -27,5 +27,6 @@ namespace tinker.Application.Interfaces.Repositories
         Task<bool> SaveAsync();
         bool AnyElements();
         bool EnsureCreation();
+
     }
 }

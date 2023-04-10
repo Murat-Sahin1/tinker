@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using tinker.Application.DTOs.CategoryDtos;
 using tinker.Application.Interfaces.Repositories;
 using tinker.Domain.Entities;
 using tinker.Persistence.Repositories;
@@ -11,22 +13,36 @@ namespace tinker.API.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategoryController(ICategoryRepository categoryRepository) {
-            _categoryRepository = categoryRepository;
-        }
-        [HttpGet]
-        public IQueryable<Category> GetAll()
+        private readonly IMapper _mapper;
+        public CategoryController(ICategoryRepository categoryRepository, IMapper mapper)
         {
-            return _categoryRepository.GetAll();
+            _categoryRepository = categoryRepository;
+            _mapper = mapper;
         }
-        
+
+        [HttpGet]
+        public async Task<ActionResult<List<CategoryReadDto>>> GetAllCategoriesWithRelations()
+        {
+            var categories = await _categoryRepository.GetAllWithProductsAsync();
+
+            var mappedCategories = _mapper.Map<List<Category>, List<CategoryReadDto>>(categories);
+
+            return Ok(mappedCategories);
+        }
 
         [HttpGet("{id}")]
-        public Task<Category> GetById(int id)
+        public async Task<ActionResult<CategoryReadDto>> GetByIdWithRelations(int id)
         {
-            Console.WriteLine("getbyid");
-            var category = _categoryRepository.GetByIdWithProductsAsync(id);
-            return category;
+            var category = await _categoryRepository.GetByIdWithProductsAsync(id);
+            return Ok(_mapper.Map<CategoryReadDto>(category));
+        }
+
+        [HttpGet("/nop")]
+        public ActionResult<List<CategoryReadDto>> GetAllCategories()
+        {
+            var categories = _categoryRepository.GetAll().ToList();
+            var mappedCategories = _mapper.Map<List<Category>, List<CategoryReadDto>>(categories);
+            return Ok(mappedCategories);
         }
     }
 }

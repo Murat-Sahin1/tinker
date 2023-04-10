@@ -1,4 +1,5 @@
-﻿using tinker.Domain.Entities;
+﻿using tinker.Application.DTOs.CategoryDtos;
+using tinker.Domain.Entities;
 
 namespace tinker.Application.Interfaces.Repositories
 {
@@ -6,5 +7,6 @@ namespace tinker.Application.Interfaces.Repositories
     {
         public Task<Category> GetByIdWithProductsAsync(int id);
         public Task<Category> GetByNameWithProductsAsync(string name);
+        public Task<List<Category>> GetAllWithProductsAsync();
     }
 }

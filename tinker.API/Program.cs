@@ -1,3 +1,4 @@
+using tinker.Application;
 using tinker.Application.Interfaces.Repositories;
 using tinker.Persistence;
 using tinker.Persistence.Seeds;
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddPersistenceServices();
+builder.Services.AddApplicationServices();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

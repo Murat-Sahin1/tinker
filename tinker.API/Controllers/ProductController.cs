@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using tinker.Application.Interfaces.Repositories;
 using tinker.Domain.Entities;
@@ -11,9 +12,11 @@ namespace tinker.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
-        public ProductController (IProductRepository productRepository)
+        private readonly IMapper _mapper;
+        public ProductController (IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
