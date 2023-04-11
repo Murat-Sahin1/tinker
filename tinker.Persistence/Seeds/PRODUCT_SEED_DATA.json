@@ -8,11 +8,11 @@
       }
     ],
     "Sold": 14,
-    "Status": "Active",
+    "Price": 1831.72,
     "Category": {
       "Id": 2
     },
-    "Price": 1831.72
+    "ProductStatus": "Active"
   },
   {
     "Name": "Chat Bot",
@@ -23,10 +23,10 @@
       }
     ],
     "Sold": 393,
-    "Status": "Active",
+    "Price": 1831.72,
     "Category": {
       "Id": 3
     },
-    "Price": 1831.72
+    "ProductStatus": "Active"
   }
 ]

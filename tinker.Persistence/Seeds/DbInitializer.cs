@@ -67,11 +67,8 @@ namespace tinker.Persistence.Seeds
                     var category = await categoryRepository.GetByIdAsync(p.Category.ID);
                     p.Category = category;
 
-
                     await productRepository.InsertAsync(p);
                     await productRepository.SaveAsync();
-
-
                 }
             }
             catch (Exception ex)

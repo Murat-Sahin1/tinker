@@ -17,12 +17,20 @@ namespace tinker.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<IReadOnlyList<Product>> GetAllWithRelationsAsync()
+        public async Task<List<Product>> GetAllWithRelationsAsync()
         {
             return await GetAll()
                 .Include(p => p.Category)
                 .AsNoTracking()
                 .ToListAsync();
+        }
+
+        public async Task<Product> GetByNameWithRelationsAsync(string name)
+        {
+            return await Table
+                .Include(c => c.Category)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Name == name);
         }
 
         public async Task<Product> GetByIdWithRelationsAsync(int id)

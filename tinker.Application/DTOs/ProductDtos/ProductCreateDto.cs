@@ -21,9 +21,9 @@ namespace tinker.Application.DTOs.ProductDtos
         public int Sold { get; set; }
         [Required]
         public decimal Price { get; set; }
-        public SellerReadDto Seller { get; set; }
+        public int SellerID { get; set; }
         [Required]
-        public CategoryReadDto Category { get; set; }
+        public int CategoryID { get; set; }
         [Required]
         public ProductStatus ProductStatus { get; set; }
     }
