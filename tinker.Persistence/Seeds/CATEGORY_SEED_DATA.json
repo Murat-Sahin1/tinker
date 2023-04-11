@@ -12,15 +12,25 @@
   {
     "CategoryID": 3,
     "Name": "LanguageProcesseingAI",
-    "Description": "Machine learning models that take image as the input."
+    "Description": "Machine learning models that take image as the input in general."
   },
   {
     "CategoryID": 4,
-    "Name": "LanguageProcesseingAI",
-    "Description": "Machine learning models that take image as the input."
+    "Name": "Medical Imaging",
+    "Description": "Machine learning models that revolves around medicine."
   },
   {
     "CategoryID": 5,
+    "Name": "Game AIs",
+    "Description": "Models for games."
+  },
+  {
+    "CategoryID": 6,
+    "Name": "Customer Segmentation",
+    "Description": "Differ your customers based on their demands."
+  },
+  {
+    "CategoryID": 7,
     "Name": "Others",
     "Description": "Other software applications."
   }

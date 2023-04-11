@@ -23,7 +23,7 @@ namespace tinker.Application.DTOs.ProductDtos
         [Required]
         public int CategoryId { get; set; }
         [Required]
-        public CategoryReadDto Category { get; set; }
+        public RefinedCategoryDto Category { get; set; }
         [Required]
         public ProductStatus ProductStatus { get; set; }
     }

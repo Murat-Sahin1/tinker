@@ -15,6 +15,21 @@
     "ProductStatus": "Active"
   },
   {
+    "Name": "Pathfinding Model",
+    "Description": "Simple chat bot, ",
+    "Images": [
+      {
+        "Url": "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all"
+      }
+    ],
+    "Sold": 393,
+    "Price": 1831.72,
+    "Category": {
+      "Id": 5
+    },
+    "ProductStatus": "Active"
+  },
+  {
     "Name": "Chat Bot",
     "Description": "Simple chat bot, ",
     "Images": [
@@ -26,6 +41,66 @@
     "Price": 1831.72,
     "Category": {
       "Id": 3
+    },
+    "ProductStatus": "Active"
+  },
+  {
+    "Name": "Blood Cell Identification",
+    "Description": "Simple chat bot, ",
+    "Images": [
+      {
+        "Url": "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all"
+      }
+    ],
+    "Sold": 393,
+    "Price": 1831.72,
+    "Category": {
+      "Id": 4
+    },
+    "ProductStatus": "Active"
+  },
+  {
+    "Name": "Race Game Ai",
+    "Description": "Getting better at racing per generation, ",
+    "Images": [
+      {
+        "Url": "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all"
+      }
+    ],
+    "Sold": 393,
+    "Price": 1831.72,
+    "Category": {
+      "Id": 1
+    },
+    "ProductStatus": "Active"
+  },
+  {
+    "Name": "Race Game Ai",
+    "Description": "Getting better at racing per generation, ",
+    "Images": [
+      {
+        "Url": "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all"
+      }
+    ],
+    "Sold": 393,
+    "Price": 1831.72,
+    "Category": {
+      "Id": 1
+    },
+    "ProductStatus": "Active"
+  },
+  {
+    "Name": "Race Game Ai",
+    "Description": "Getting better at racing per generation, ",
+    "Images": [
+      {
+        "Url": "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all"
+      }
+    ],
+    "Sold": 393,
+    "Price": 1831.72,
+    "Category": {
+      "Id": 1
     },
     "ProductStatus": "Active"
   }

@@ -79,7 +79,6 @@ namespace tinker.API.Controllers
             var category = await _categoryRepository.GetByIdAsync(product.CategoryId);
 
             product.Category = category;
-            product.Category.Products = null;
 
             bool isAdded = await _productRepository.InsertAsync(product);
             await _productRepository.SaveAsync();

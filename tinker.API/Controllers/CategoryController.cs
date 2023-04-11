@@ -49,6 +49,7 @@ namespace tinker.API.Controllers
         public async Task<ActionResult<CategoryReadDto>> GetByIdWithRelations(int id)
         {
             var category = await _categoryRepository.GetByIdWithProductsAsync(id);
+            Console.WriteLine(category.Products);
             return Ok(_mapper.Map<CategoryReadDto>(category));
         }
 
@@ -82,7 +83,7 @@ namespace tinker.API.Controllers
                 othersCategory.Products.Add(item);
             }
 
-            category.Products.Clear();
+            
 
             bool isDeleted = _categoryRepository.Remove(category);
             await _categoryRepository.SaveAsync();

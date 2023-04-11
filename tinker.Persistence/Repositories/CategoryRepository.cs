@@ -26,24 +26,24 @@ namespace tinker.Persistence.Repositories
         public async Task<Category> GetByIdWithProductsAsync(int id)
         {
             return await Table
-                .Include(c => c.Products)
                 .AsNoTracking()
+                .Include(c => c.Products)
                 .FirstOrDefaultAsync(c => c.ID == id);
         }
 
         public async Task<Category> GetByNameWithProductsAsync(string name)
         {
             return await Table
-                .Include(c => c.Products)
                 .AsNoTracking()
+                .Include(c => c.Products)
                 .FirstOrDefaultAsync(c => c.Name == name);
         }
 
         public async Task<List<Category>> GetAllWithProductsAsync()
         {
-            return await Table
-                .Include(c => c.Products)
+            return await GetAll()
                 .AsNoTracking()
+                .Include(c => c.Products)
                 .ToListAsync();
         }
     }

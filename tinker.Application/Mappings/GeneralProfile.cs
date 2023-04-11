@@ -12,24 +12,16 @@ namespace tinker.Application.Mappings
         public GeneralProfile() 
         {
             //Source --> Target
-            CreateMap<Product, ProductReadDto>()
-                .ForMember(dest => dest.Category,
-                            opts => opts.MapFrom(src => src.Category));
+            CreateMap<Product, ProductReadDto>();
 
-            CreateMap<ProductCreateDto, Product>()
-                .ForMember(dest => dest.Images,
-                            opts => opts.MapFrom(src => 
-                                src.Images.ToList()))
-                .ForMember(dest => dest.CategoryId,
-                            opts => opts.MapFrom(src =>
-                                src.CategoryID));
+            CreateMap<ProductCreateDto, Product>();
 
-            CreateMap<Category, CategoryReadDto>()
-                .ForMember(dest => dest.Products,
-                            opts => opts.MapFrom(src =>
-                                src.Products.ToList()));
+            CreateMap<Category, CategoryReadDto>();
 
             CreateMap<CategoryCreateDto, Category>();
+
+            CreateMap<RefinedCategoryDto, Category>();
+            CreateMap<Category, RefinedCategoryDto>();
 
             CreateMap<Product, Product>();
 
