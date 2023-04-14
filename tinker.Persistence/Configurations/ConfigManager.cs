@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace tinker.Persistence.Configurations
 {
+    // DEPRECATED CLASS, NOT IN USE
     static class ConfigManager
     {
         static private string getBasePath()
         {
-            return Path.Combine(
-        Directory.GetCurrentDirectory(),
-        @"../../tinker/tinker.API");
+            return Path.Combine(Directory.GetCurrentDirectory(), "../../tinker.API");
         }
         public static string InMemoryConnectionString
         {
@@ -23,7 +22,7 @@ namespace tinker.Persistence.Configurations
                 configurationManager.SetBasePath(getBasePath());
                 configurationManager.AddJsonFile("appsettings.json");
 
-                return configurationManager.GetConnectionString("InMemoryDatabase");
+                return ""; //configurationManager.GetConnectionString();
             }
         }
     }

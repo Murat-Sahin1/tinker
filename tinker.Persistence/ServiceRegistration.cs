@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using System.Runtime.CompilerServices;
 using tinker.Application.Interfaces.Repositories;
 using tinker.Persistence.Configurations;
 using tinker.Persistence.Contexts;
@@ -9,9 +11,10 @@ namespace tinker.Persistence
 {
     public static class ServiceRegistration
     {
+        public static ApplicationSettings _settings;
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(ConfigManager.InMemoryConnectionString));
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(_settings.ConnectionStrings["InMemoryDatabase"]));
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();

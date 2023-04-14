@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using tinker.Application.DTOs.CategoryDtos;
@@ -18,10 +20,13 @@ namespace tinker.Persistence.Repositories
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
-        public CategoryRepository(AppDbContext dbContext, IMapper mapper) : base(dbContext)
+        private ApplicationSettings _settings;
+        public CategoryRepository(AppDbContext dbContext, IMapper mapper, IOptions<ApplicationSettings> options) : base(dbContext)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _settings = options.Value;
+            Console.WriteLine($"aaaaaaaaaaaaaaaaaaaaa {_settings.ConnectionStrings}");
         }
         public async Task<Category> GetByIdWithProductsAsync(int id)
         {

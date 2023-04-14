@@ -65,7 +65,7 @@ namespace tinker.API.Controllers
 
             var othersCategory = await _categoryRepository.GetByNameWithProductsAsync("Others");
 
-            if(othersCategory == null)
+            if (othersCategory == null)
             {
                 throw new Exception("Others category could not be found.");
             }
@@ -75,7 +75,7 @@ namespace tinker.API.Controllers
                 throw new Exception("You cannot delete the others category.");
             }
 
-            foreach(var item in category.Products)
+            foreach (var item in category.Products)
             {
                 item.Category = othersCategory;
                 item.CategoryId = othersCategory.ID;
@@ -83,7 +83,7 @@ namespace tinker.API.Controllers
                 othersCategory.Products.Add(item);
             }
 
-            
+
 
             bool isDeleted = _categoryRepository.Remove(category);
             await _categoryRepository.SaveAsync();
@@ -109,8 +109,8 @@ namespace tinker.API.Controllers
 
             var mappedCategory = _mapper.Map<Category>(updatedCategory);
 
-            categoryToUpdate.Name= mappedCategory.Name;
-            categoryToUpdate.Description= mappedCategory.Description;
+            categoryToUpdate.Name = mappedCategory.Name;
+            categoryToUpdate.Description = mappedCategory.Description;
 
             await _categoryRepository.SaveAsync();
 
