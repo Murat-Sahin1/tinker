@@ -25,27 +25,32 @@ namespace tinker.Persistence.Seeds
                 }
             }
 
-
-            var categoryData = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), @"../tinker.Persistence/Seeds/CATEGORY_SEED_DATA.json"));
-            var deserializedCategoryList = JsonConvert.DeserializeObject<List<Category>>(categoryData);
+            var categories = new List<Category>
+            {
+            new Category{Name="ReinforcementAI",Description="Machine learning training method based on rewarding desired behaviors and/or punishing undesired ones."},
+            new Category{Name="ComputerVisionAI",Description="Machine learning models that take image as the input."},
+            new Category{Name="LanguageProcesseingAI",Description="Machine learning models that take image as the input in general."},
+            new Category{Name="Medical Imaging",Description="Machine learning models that revolves around medicine."},
+            new Category{Name="Game AIs",Description="Models for games."},
+            new Category{Name="Customer Segmentation",Description="Differ your customers based on their demands."},
+            new Category{Name="Others",Description="Other software applications."},
+            };
 
             try
             {
-                Console.WriteLine("Seeding Category Data...");
-                foreach (Category c in deserializedCategoryList)
-                {
-                    await categoryRepository.InsertAsync(c);
-                    await categoryRepository.SaveAsync();
-                }
+                await categoryRepository.InsertRangeAsync(categories);
+                await categoryRepository.SaveAsync();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error occured while seeding the category data: ", ex.Message);
                 throw;
             }
-            Console.WriteLine("Seeding the category data is complete.");
-            return true; // seeding is complete.
+
+
+            return true;
         }
+
         public static async Task<bool> seedProductData(IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
             if (productRepository.EnsureCreation())
@@ -56,15 +61,66 @@ namespace tinker.Persistence.Seeds
                 }
             }
 
-            var productData = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), @"../tinker.Persistence/Seeds/PRODUCT_SEED_DATA.json"));
-            var deserializedProductList = JsonConvert.DeserializeObject<List<Product>>(productData);
+            var products = new List<Product>
+            {
+            new Product
+            {
+                Name="Cat and Dog Identificator",
+                Description="A model that simply detects dogs and cats and identifies them.",
+                Images = new List<Image>{ new Image { Url = "https://flxt.tmsimg.com/assets/p22041592_i_v13_aa.jpg"}},
+                Sold = 14,
+                Price = 1831,
+                CategoryId = 2,
+                ProductStatus = Domain.Enums.ProductStatus.Active,
+            },
+            new Product
+            {
+                Name="Pathfinding Model",
+                Description="Simple chat bot",
+                Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
+                Sold = 14,
+                Price = 1831,
+                CategoryId = 5,
+                ProductStatus = Domain.Enums.ProductStatus.Active,
+            },
+            new Product
+            {
+                Name="Chat Bot",
+                Description="Simple chat bot",
+                Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
+                Sold = 14,
+                Price = 1831,
+                CategoryId = 3,
+                ProductStatus = Domain.Enums.ProductStatus.Active,
+            },
+            new Product
+            {
+                Name="Blood Cell Identification",
+                Description="Simple chat bot",
+                Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
+                Sold = 393,
+                Price = 1831,
+                CategoryId = 4,
+                ProductStatus = Domain.Enums.ProductStatus.Active,
+            },
+            new Product
+            {
+                Name="Race Game Ai",
+                Description="Getting better at racing per generation, ",
+                Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
+                Sold = 393,
+                Price = 1831,
+                CategoryId = 1,
+                ProductStatus = Domain.Enums.ProductStatus.Active,
+            },
+            };
 
             try
             {
                 Console.WriteLine("Seeding Product Data...");
-                foreach (Product p in deserializedProductList)
+                foreach (Product p in products)
                 {
-                    var category = await categoryRepository.GetByIdAsync(p.Category.ID);
+                    var category = await categoryRepository.GetByIdAsync(p.CategoryId);
                     p.Category = category;
 
                     await productRepository.InsertAsync(p);

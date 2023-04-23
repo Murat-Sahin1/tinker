@@ -20,13 +20,10 @@ namespace tinker.Persistence.Repositories
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
-        private ApplicationSettings _settings;
-        public CategoryRepository(AppDbContext dbContext, IMapper mapper, IOptions<ApplicationSettings> options) : base(dbContext)
+        public CategoryRepository(AppDbContext dbContext, IMapper mapper) : base(dbContext)
         {
             _dbContext = dbContext;
             _mapper = mapper;
-            _settings = options.Value;
-            Console.WriteLine($"aaaaaaaaaaaaaaaaaaaaa {_settings.ConnectionStrings}");
         }
         public async Task<Category> GetByIdWithProductsAsync(int id)
         {
