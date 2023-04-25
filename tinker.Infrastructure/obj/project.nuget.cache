@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rYjXwGmUX/oyG0GDuz+w2GbwB1tLESGRYwz1IPa8lSIlSP568G68+aNCLYsa5VpwGp/25IyITIka6VnhNsNi8g==",
+  "dgSpecHash": "1wR5YK4SluzX9pHbQk8fH5NYMQxRcuVdI7E3QHeUCGp6Lf6/aNK3uUdhwkMnpRdIhdk1H+okdGABQNNCj1ekFg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Voul\\tinker\\tinker\\tinker.Infrastructure\\tinker.Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Voul\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Voul\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Voul\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

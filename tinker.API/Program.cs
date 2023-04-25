@@ -8,9 +8,21 @@ using tinker.Application.Interfaces.Repositories;
 using tinker.Persistence;
 using tinker.Persistence.Seeds;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: "AllowOrigin",
+        builder => {
+            builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+        });
+});
 builder.Services.AddControllers();
 
 using IHost host = Host.CreateDefaultBuilder(args)
@@ -39,6 +51,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,7 +62,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors("AllowOrigin");
+//app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 
@@ -66,7 +82,8 @@ using (var scope = app.Services.CreateScope())
         await DbInitializer.seedCategoryData(categoryRepository);
         await DbInitializer.seedProductData(productRepository, categoryRepository);
 
-    } catch (Exception ex)
+    }
+    catch (Exception ex)
     {
         Console.WriteLine("Exception occured while trying to get a service in Program.cs", ex.Message);
         throw;
