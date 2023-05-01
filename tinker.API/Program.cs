@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using System.Configuration;
 using tinker.Application;
 using tinker.Application.Interfaces.Repositories;
+using tinker.Infrastructure;
 using tinker.Persistence;
 using tinker.Persistence.Seeds;
 
@@ -45,6 +46,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

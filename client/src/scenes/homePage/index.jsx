@@ -1,7 +1,8 @@
 import NavBar from "scenes/navbar";
 import FlexBetween from "components/FlexBetween";
 import Form from "./Form";
-import { Box, useMediaQuery, useTheme, } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import ModelOutput from "./ModelOutput";
 
 const HomePage = () => {
   const theme = useTheme();
@@ -31,15 +32,25 @@ const HomePage = () => {
             textAlign={"center"}
             backgroundColor={alt}
             borderRadius={10}
-            
           >
             <Form></Form>
           </Box>
         </Box>
         {/* FRIENDS-LIST */}
-        {isNonMobileScreens && (
-          <Box flexBasis="50%" backgroundColor="red" padding="30rem"></Box>
-        )}
+        
+          <Box flexBasis="50%">
+            <Box
+              width="100%"
+              padding="1% 6%"
+              justifyContent="center"
+              textAlign={"center"}
+              backgroundColor={alt}
+              borderRadius={10}
+            >
+                <ModelOutput></ModelOutput>
+            </Box>
+          </Box>
+        
       </Box>
     </Box>
   );
