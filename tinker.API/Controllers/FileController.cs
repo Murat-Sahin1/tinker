@@ -16,17 +16,17 @@ namespace tinker.API.Controllers
             _fileHandlerRepository = fileHandlerRepository;
         }
 
+        [DisableRequestSizeLimit]
         [HttpPost("Upload")]
-        public async Task<string> UploadFile([FromForm] FileUpload objfile)
+        public async Task<bool> UploadFile([FromForm] FileUpload objfile)
         {
             return await _fileHandlerRepository.UploadFormWithFile(objfile);
         }
 
-        [HttpGet]
-
-        public string ReadFileOutput()
+        [HttpPost("Execute")]
+        public string ReadFileOutput([FromForm] FileExecute executingDetails)
         {
-            return _fileHandlerRepository.ReadFileUpload();
+            return _fileHandlerRepository.ExecuteModel(executingDetails.FileName, executingDetails.InputName);
         }
     }
 } 

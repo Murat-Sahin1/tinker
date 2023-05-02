@@ -14,4 +14,8 @@
     <ProjectReference Include="..\tinker.Application\tinker.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ModelInputs\TextInput\" />
+  </ItemGroup>
+
 </Project>

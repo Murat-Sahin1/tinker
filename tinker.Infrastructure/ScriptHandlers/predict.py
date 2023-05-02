@@ -1,5 +1,6 @@
 import tensorflow as tf
 import argparse
+import os
 import numpy as np
 from PIL import Image
 
@@ -14,11 +15,20 @@ parser.add_argument('--input', type=str, nargs='+', required=True,
 args = parser.parse_args()
 print(args.input[0])
 
+# Construct full path to model file using current working directory and relative path
+model_path = os.path.join(os.getcwd(), args.model_path)
+
+# Construct full path to image file using current working directory and relative path
+# Getting the image path: image_path = os.path.abspath(os.path.join(os.getcwd(), args.input[0]))
+image_path = os.path.join(os.getcwd(), args.input[0])
+
+print("Image path: ", image_path)
+
 # Load the TensorFlow model from .h5 file
-model = tf.keras.models.load_model(args.model_path)
+model = tf.keras.models.load_model(model_path)
 
 # Load image using PIL
-image = Image.open(args.input[0])
+image = Image.open(image_path)
 
 # Convert image to NumPy array
 image_array = tf.keras.preprocessing.image.img_to_array(image)

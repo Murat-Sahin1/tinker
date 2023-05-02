@@ -5,49 +5,43 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tinker.Domain.Entities;
 
 namespace tinker.Infrastructure.ScriptHandlers
 {
     public class PythonScriptHandler
     {
-        public static string Exec_Process()
+        public static string Exec_Process(string modelName, List<string> inputNames)
         {
-            convertNotebookIntoPy();
+            var argument = $"/C python ../tinker.Infrastructure/ScriptHandlers/predict.py --model_path=../tinker.Infrastructure/AiModelfiles/{modelName}/{modelName + ".h5"} --input=../tinker.Infrastructure/ModelInputs/ImageInput/{modelName}/";
+            foreach (string inputName in inputNames)
+            {
+                argument += inputName + ".jpeg" + " ";
+            }
+            Console.WriteLine(argument);
 
             var proc = new Process
             {
                 StartInfo = new ProcessStartInfo
                 { 
                     FileName = "CMD.exe",
-                    Arguments = "/C ipython C:/Users/Voul/tinker/tinker/tinker.Infrastructure/AiModelFiles/TF2_Linear_Regression.py",
+                    Arguments = argument,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = false
                 }
             };
 
-            while (!System.IO.File.Exists("C:/Users/Voul/tinker/tinker/tinker.Infrastructure/AiModelFiles/TF2_Linear_Regression.py"))
-            {
-                Console.WriteLine("Converting the notebook into a py file...");
-                System.Threading.Thread.Sleep(1000);
-            }
-            string line = "";
+            string output = "";
             proc.Start();
             while (!proc.StandardOutput.EndOfStream)
             {
-                line = proc.StandardOutput.ReadToEnd();
+                output = proc.StandardOutput.ReadToEnd();
 
-                Console.WriteLine($"{line}");
+                Console.WriteLine($"{output}");
             }
 
-            return line;
-        }
-
-        private async static void convertNotebookIntoPy()
-        {
-            //Converting ipynb into py
-            string convertingCommand = "/C jupyter nbconvert C:/Users/Voul/tinker/tinker/tinker.Infrastructure/AiModelFiles/TF2_Linear_Regression --to python";
-            System.Diagnostics.Process.Start("CMD.exe", convertingCommand);
+            return output;
         }
     }
 }
