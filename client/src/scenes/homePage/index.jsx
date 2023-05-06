@@ -1,12 +1,14 @@
 import NavBar from "scenes/navbar";
-import FlexBetween from "components/FlexBetween";
-import Form from "./Form";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
-import ModelOutput from "./ModelOutput";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 const HomePage = () => {
-  const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const theme = useTheme();
+  const neutralLight = theme.palette.neutral.light;
+  const dark = theme.palette.neutral.dark;
+  const background = theme.palette.background.default;
+  const primaryLight = theme.palette.primary.light;
+  const primaryMain = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
 
   return (
@@ -15,42 +17,64 @@ const HomePage = () => {
       {/* HOME PAGE */}
       <Box
         width="100%"
-        padding="2rem 6%"
-        display={isNonMobileScreens ? "flex" : "block"}
-        gap="4rem"
-        justifyContent="space-around"
+        padding="2rem"
+        gap="0.5rem"
+        justifyContent="center"
+        alignItems={"center"}
+        display="flex"
       >
-        {/* POSTS */}
+        {/* MAIN MESSAGE */}
         <Box
-          flexBasis={isNonMobileScreens ? "40%" : undefined}
-          mt={isNonMobileScreens ? undefined : "2rem"}
+          flexBasis={isNonMobileScreens ? "100%" : undefined}
+          margin="1rem"
+          maxWidth="50rem"
+          borderWidth="2px"
+          borderStyle="solid"
+          borderColor = "red"
+          borderRadius={2}
+          display="flex"
+          flexDirection={"column"}
+          backgroundColor = {alt}
+          alignItems="center"
+          justifyContent={"center"}
+          alignSelf={"center"}
         >
-          <Box
-            width="100%"
-            padding="1% 6%"
-            justifyContent="center"
-            textAlign={"center"}
-            backgroundColor={alt}
-            borderRadius={10}
+          <Typography
+            fontWeight="bold"
+            marginTop="1rem"
+            variant="h1"
+            color="primary"
+            sx={{
+              lineHeight: 1.2,
+              whiteSpace: "pre-line",
+            }}
           >
-            <Form></Form>
+            <Box
+              fontSize="5rem"
+              margin="0.5rem"
+              display={"flex"}
+              justifyContent={"center"}
+            >
+              ☕
+            </Box>
+            <Box display={"flex"} justifyContent={"center"}>
+              The high end AI models,
+            </Box>
+            <Box display={"flex"} justifyContent={"center"}>
+              done by people you trust.
+            </Box>
+          </Typography>
+          <Box marginTop={"1rem"} maxWidth={"4 rem"} marginBottom="1rem">
+            <Typography fontSize={19} >
+              <Box justifyContent={"center"}>
+                Want to deploy a project but need help?
+              </Box>
+              <Box justifyContent={"center"}>
+                Work with a proffesional fits your mind.
+              </Box>
+            </Typography>
           </Box>
         </Box>
-        {/* FRIENDS-LIST */}
-        
-          <Box flexBasis="50%">
-            <Box
-              width="100%"
-              padding="1% 6%"
-              justifyContent="center"
-              textAlign={"center"}
-              backgroundColor={alt}
-              borderRadius={10}
-            >
-                <ModelOutput></ModelOutput>
-            </Box>
-          </Box>
-        
       </Box>
     </Box>
   );

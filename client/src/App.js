@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
+import ModelLoadPage from "scenes/modelLoadPage";
 import HomePage from "scenes/homePage";
+
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -16,9 +18,13 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route
+          <Route
               path="/"
               element={<HomePage/>}
+            />
+            <Route
+              path="/modelLoad"
+              element={<ModelLoadPage/>}
             />
           </Routes>
         </ThemeProvider>

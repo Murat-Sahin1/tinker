@@ -61,7 +61,7 @@ const NavBar = () => {
             },
           }}
         >
-          Tinker 👨‍🔧
+          Tinker
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween

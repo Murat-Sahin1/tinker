@@ -33,7 +33,7 @@ const ModelOutput = () => {
 
   const getModelOutput = async () => {
     try {
-    console.log("method")
+      console.log("method");
       const res = await axios.get("http://localhost:5074/api/File");
       setOutput(res.data);
       console.log(res);
@@ -54,9 +54,11 @@ const ModelOutput = () => {
           color: palette.background.alt,
           "&:hover": { color: palette.primary.main },
         }}
-        onClick={()=>{getModelOutput()}}
+        onClick={() => {
+          getModelOutput();
+        }}
       >
-        GET MODEL OUTPUT
+        <Typography fontWeight="bold" variant = "h5">GET MODEL OUTPUT</Typography>
       </Button>
       <Typography margin="1 rem">{output}</Typography>
     </Box>
