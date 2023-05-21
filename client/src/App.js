@@ -6,7 +6,7 @@ import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import ModelLoadPage from "scenes/modelLoadPage";
 import HomePage from "scenes/homePage";
-
+import CategoriesPage from "scenes/categoriesPage";
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -18,14 +18,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-          <Route
-              path="/"
-              element={<HomePage/>}
-            />
-            <Route
-              path="/modelLoad"
-              element={<ModelLoadPage/>}
-            />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/modelLoad" element={<ModelLoadPage />} />
+            <Route path="/categories" element={<CategoriesPage />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

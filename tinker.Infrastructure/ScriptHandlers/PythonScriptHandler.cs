@@ -16,7 +16,7 @@ namespace tinker.Infrastructure.ScriptHandlers
             var argument = $"/C python ../tinker.Infrastructure/ScriptHandlers/predict.py --model_path=../tinker.Infrastructure/AiModelfiles/{modelName}/{modelName + ".h5"} --input=../tinker.Infrastructure/ModelInputs/ImageInput/{modelName}/";
             foreach (string inputName in inputNames)
             {
-                argument += inputName + ".jpeg" + " ";
+                argument += inputName + "_INPUT" + ".jpeg" + " ";
             }
             Console.WriteLine(argument);
 

@@ -1,4 +1,5 @@
-﻿using tinker.Application.DTOs.FileDtos;
+﻿using System.Reflection.Metadata.Ecma335;
+using tinker.Application.DTOs.FileDtos;
 using tinker.Application.Interfaces.Repositories;
 using tinker.Infrastructure.ScriptHandlers;
 
@@ -6,7 +7,7 @@ namespace tinker.Infrastructure.Repositories
 {
     public class FileHandlerRepository : IFileHandlerRepository
     {
-        public async Task<bool> UploadFormWithFile(FileUpload form)
+        public async Task<string> UploadFormWithFile(FileUpload form)
         {
             Guid fileName = Guid.NewGuid();
             Console.WriteLine(form);
@@ -36,7 +37,7 @@ namespace tinker.Infrastructure.Repositories
                 catch (Exception ex)
                 {
                     Console.Write("Error is occured while trying to upload model file.");
-                    return false;
+                    return ex.Message;
                 }
             } else{
                 throw new Exception("Model file could not be found.");
@@ -71,7 +72,7 @@ namespace tinker.Infrastructure.Repositories
                     catch (Exception ex)
                     {
                         Console.Write("Error is occured while trying to upload input file.");
-                        return false;
+                        return ex.Message;
                     }
                 } else if (type == "Text")
                 {
@@ -97,7 +98,7 @@ namespace tinker.Infrastructure.Repositories
                     catch (Exception ex)
                     {
                         Console.Write("Error is occured while trying to upload input file.");
-                        return false;
+                        return ex.Message;
                     }
                 } else
                 {
@@ -117,7 +118,7 @@ namespace tinker.Infrastructure.Repositories
 
             }
 
-            return true;
+            return fileName.ToString();
         }
 
         public string ExecuteModel(string modelName, List<string> inputNames)

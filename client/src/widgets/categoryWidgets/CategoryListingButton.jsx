@@ -1,20 +1,20 @@
 import { styled } from "@mui/material/styles";
-import { Box, useTheme} from "@mui/material";
+import { Box } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import Typography from "@mui/material/Typography";
-import UserImage from "components/UserImage";
+import { useTheme } from "@emotion/react";
 import LandscapeIcon from "@mui/icons-material/Landscape";
 
 const StyledBox = styled(Box)({
   border: `1px solid #291e11`,
   padding: "0.1rem",
-  width: "9rem",
-  height: "12rem",
-  borderRadius: 14,
+  width: "90%",
+  height: "4rem",
+  borderRadius: 9,
   display: "flex",
 });
 
-function CategoryButton({ icon, categoryName, modelCount }) {
+function CategoryListingButton({ icon, categoryName, modelCount }) {
   const theme = useTheme();
   const neutralMain = theme.palette.neutral.mediumMain;
   const neutral = theme.palette.neutral.light;
@@ -28,13 +28,13 @@ function CategoryButton({ icon, categoryName, modelCount }) {
   return (
     <StyledBox
       sx={{
-        boxShadow: 3,
+        borderWidth: "1px",
+        boxShadow: 1,
+        borderColor: neutral,
         "&:hover": {
           backgroundColor: neutralDark,
           cursor: "pointer",
           transitionDuration: "0.4s",
-          transform: "scale(1.2)",
-          boxShadow: `0 0 10px`,
           "& .icon": {
             color: background,
             transitionDuration: "0.4s",
@@ -46,35 +46,29 @@ function CategoryButton({ icon, categoryName, modelCount }) {
         },
       }}
     >
-      <Box width="100%" display="flex">
+      <Box width="100%" alignItems={"center"} gap="0.2rem" display={"flex"}>
+        <Box>
+          <LandscapeIcon className="icon" sx={{ fontSize: 50, color: dark }} />
+        </Box>
         <Box
-          width={"100%"}
-          display={"flex"}
-          flexDirection={"column"}
-          justifyContent={"space-evenly"}
+          sx={{
+            flex: 1,
+          }}
+          display="flex"
           alignItems={"center"}
+          justifyContent={"center"}
+          alignSelf={"center"}
+          padding="0.5rem"
         >
-          {icon === "Image" ? (
-            <LandscapeIcon
-              className="icon"
-              sx={{
-                fontSize: 50,
-                color: dark,
-              }}
-            />
-          ) : (
-            <></>
-          )}
           <Typography
-            fontWeight="bold"
-            variant="h4"
+            justifyContent="center"
+            alignItems={"center"}
             color="primary"
+            fontWeight="bold"
+            variant="h5"
             textAlign={"center"}
           >
             {categoryName}
-          </Typography>
-          <Typography fontSize={"0.8rem"} color={neutralMain}>
-            {modelCount} models
           </Typography>
         </Box>
       </Box>
@@ -82,4 +76,4 @@ function CategoryButton({ icon, categoryName, modelCount }) {
   );
 }
 
-export default CategoryButton;
+export default CategoryListingButton;

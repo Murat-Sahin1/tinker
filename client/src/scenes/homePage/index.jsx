@@ -1,5 +1,5 @@
 import NavBar from "scenes/navbar";
-import React from "react";
+import { useState, useEffect } from "react";
 import FlexBetween from "components/FlexBetween";
 import "./styles.css";
 import {
@@ -14,9 +14,11 @@ import { BorderColor, Landscape } from "@mui/icons-material";
 import SellerButton from "widgets/SellerButton";
 import ClassIcon from "@mui/icons-material/Class";
 import CategoryButton from "widgets/CategoryButton";
-import LandscapeIcon from "@mui/icons-material/Landscape";
+import axios from "axios";
 
 const HomePage = () => {
+  const [categories, setCategories] = useState([]);
+
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const theme = useTheme();
 
@@ -25,6 +27,19 @@ const HomePage = () => {
   const primaryLight = theme.palette.primary.light;
   const primaryMain = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
+
+  useEffect(() => {
+    axios
+      .get("https://localhost:7260/api/Category")
+      .then((response) => {
+        setCategories(response.data);
+        console.log(categories)
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <Box>
@@ -223,13 +238,23 @@ const HomePage = () => {
           >
             <Box
               width={"70%"}
-              display={"flex"}
+              right={0}
               flexDirection={"column"}
               alignItems={"center"}
             >
-              <ClassIcon sx={{ fontSize: "2rem" }}></ClassIcon>
-              <Typography fontSize={"2rem"} fontWeight={"bold"}>
+              <ClassIcon style={{ fontSize: "2rem", color: dark }}></ClassIcon>
+              <Typography
+                fontSize={"1.5rem"}
+                fontWeight={"bold"}
+                color="primary"
+              >
                 Categories
+              </Typography>
+              <Typography variant="h6">
+              Thousands of creators work as a community to solve Audio, Vision, and Language with AI.
+              </Typography>
+              <Typography variant="h6" fontWeight={"bold"} paddingTop="10px">
+               See them all
               </Typography>
             </Box>
           </Box>
@@ -242,42 +267,13 @@ const HomePage = () => {
             marginRight={"4rem"}
             flexDirection={"row"}
           >
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            <CategoryButton
-              icon={"Image"}
-              categoryName={"Image Classification"}
-              modelCount={432}
-            ></CategoryButton>
-            
+            {categories.map((category) => (
+              <CategoryButton
+                icon={"Image"}
+                categoryName={category.name}
+                modelCount={432}
+              ></CategoryButton>
+            ))}
           </Box>
         </Box>
       </Box>

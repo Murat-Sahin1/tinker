@@ -18,7 +18,7 @@ namespace tinker.API.Controllers
 
         [DisableRequestSizeLimit]
         [HttpPost("Upload")]
-        public async Task<bool> UploadFile([FromForm] FileUpload objfile)
+        public async Task<string> UploadFile([FromForm] FileUpload objfile)
         {
             return await _fileHandlerRepository.UploadFormWithFile(objfile);
         }

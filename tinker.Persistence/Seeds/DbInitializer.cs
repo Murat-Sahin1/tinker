@@ -27,11 +27,11 @@ namespace tinker.Persistence.Seeds
 
             var categories = new List<Category>
             {
-            new Category{Name="ReinforcementAI",Description="Machine learning training method based on rewarding desired behaviors and/or punishing undesired ones."},
-            new Category{Name="ComputerVisionAI",Description="Machine learning models that take image as the input."},
-            new Category{Name="LanguageProcesseingAI",Description="Machine learning models that take image as the input in general."},
+            new Category{Name="Reinforcement Learning",Description="Machine learning training method based on rewarding desired behaviors and/or punishing undesired ones."},
+            new Category{Name="Computer Vision",Description="Machine learning models that take image as the input."},
+            new Category{Name="Language Processeing",Description="Machine learning models that take image as the input in general."},
             new Category{Name="Medical Imaging",Description="Machine learning models that revolves around medicine."},
-            new Category{Name="Game AIs",Description="Models for games."},
+            new Category{Name="Game AI",Description="Models for games."},
             new Category{Name="Customer Segmentation",Description="Differ your customers based on their demands."},
             new Category{Name="Others",Description="Other software applications."},
             };

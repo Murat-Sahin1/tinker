@@ -19,34 +19,51 @@ import FlexBetween from "components/FlexBetween";
 import axios from "axios";
 
 const modelSchema = yup.object().shape({
-  model: yup.string().required("Required"),
+  modelFile: yup.string().required("Required"),
+  inputType: yup.string().required("Required"),
+  inputFile: yup.string().required("Required"),
 });
 
 const initialValues = {
-  model: "",
+  modelFile: "",
+  inputType: "",
+  inputFile: ""
 };
 
-const Form = () => {
+const Form = ({ onModelNameChange }) => {
   const { palette } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [file, setFile] = useState();
+  const [modelName, setModelName] = useState();
+
+  const handleModelNameChange = (modelName) => {
+    setModelName(modelName);
+    onModelNameChange(modelName);
+  };
 
   const sendModelFile = async (values, onSubmitProps) => {
     console.log(values);
     const formData = new FormData();
-    formData.append("files", values.model);
-    console.log(formData.get("files"));
-    try{
-        const res = await axios.post("http://localhost:5074/api/File/Upload", formData);
-        console.log(res);
-    } catch(ex){
-        console.log(ex);
+    formData.append("modelFile", values.modelFile);
+    formData.append("inputType", values.inputType);
+    formData.append("inputFile", values.inputFile);
+    console.log(formData);
+    try {
+      const res = await axios.post(
+        "http://localhost:5074/api/File/Upload",
+        formData
+      );
+      handleModelNameChange(res.data);
+      console.log(res);
+    } catch (ex) {
+      console.log(ex);
     }
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
+    console.log(values);
     await sendModelFile(values, onSubmitProps);
   };
 
@@ -78,6 +95,14 @@ const Form = () => {
             }}
           >
             <>
+              <TextField
+                label="InputType"
+                onBlur={handleBlur} // Handles when clicked away
+                onChange={handleChange} //Handles when typing
+                value={values.inputType}
+                name="inputType"
+                sx={{ gridColumn: "span 4", justifyContent: "center" }}
+              />
               <Box
                 gridColumn="span 4"
                 border={`1px solid ${palette.neutral.medium}`}
@@ -85,10 +110,10 @@ const Form = () => {
                 padding="1rem"
               >
                 <Dropzone
-                  acceptedFiles=".py,.ipynb"
+                  acceptedFiles=".h5"
                   multiple={false}
                   onDrop={(acceptedFiles) => {
-                    setFieldValue("model", acceptedFiles[0]);
+                    setFieldValue("modelFile", acceptedFiles[0]);
                     setFile(acceptedFiles[0]);
                   }}
                 >
@@ -100,11 +125,45 @@ const Form = () => {
                       sx={{ "&:hover": { cursor: "pointer" } }}
                     >
                       <input {...getInputProps()} />
-                      {!values.model ? (
-                        <p>Add File Here</p>
+                      {!values.modelFile ? (
+                        <p>Add Model File Here</p>
                       ) : (
                         <FlexBetween>
-                          <Typography>{values.model.name}</Typography>
+                          <Typography>{values.modelFile.name}</Typography>
+                          <EditOutlinedIcon />
+                        </FlexBetween>
+                      )}
+                    </Box>
+                  )}
+                </Dropzone>
+              </Box>
+              <Box
+                gridColumn="span 4"
+                border={`1px solid ${palette.neutral.medium}`}
+                borderRadius="5px"
+                padding="1rem"
+              >
+                <Dropzone
+                  acceptedFiles=".jpeg,.jpg,.png"
+                  multiple={false}
+                  onDrop={(acceptedFiles) => {
+                    setFieldValue("inputFile", acceptedFiles[0]);
+                    setFile(acceptedFiles[0]);
+                  }}
+                >
+                  {({ getRootProps, getInputProps }) => (
+                    <Box
+                      {...getRootProps()}
+                      border={`2px dashed ${palette.primary.main}`}
+                      p="1rem"
+                      sx={{ "&:hover": { cursor: "pointer" } }}
+                    >
+                      <input {...getInputProps()} />
+                      {!values.inputFile ? (
+                        <p>Add Input File Here</p>
+                      ) : (
+                        <FlexBetween>
+                          <Typography>{values.inputFile.name}</Typography>
                           <EditOutlinedIcon />
                         </FlexBetween>
                       )}
@@ -140,6 +199,23 @@ const Form = () => {
             >
               Click here to get assistance.
             </Typography>
+            {modelName && (<Typography
+              sx={{
+                marginTop: "2rem",
+                fontSize: "1rem",
+                color: "#50C878",
+                "&:hover": {},
+              }}
+            >
+              <Box>
+              Successful! Your Model ID: 
+              </Box>
+              <Box>
+              {modelName}
+              </Box>
+              
+            </Typography>)}
+            
           </Box>
         </form>
       )}
