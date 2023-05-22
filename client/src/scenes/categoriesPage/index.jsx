@@ -2,8 +2,10 @@ import NavBar from "scenes/navbar";
 import { useState, useEffect } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import CategoryListingButton from "widgets/categoryWidgets/CategoryListingButton";
+import ProductListingWidget from "widgets/categoryWidgets/ProductListingWidget";
 import FlexBetween from "components/FlexBetween";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CategoriesPage = () => {
   const theme = useTheme();
@@ -16,20 +18,27 @@ const CategoriesPage = () => {
   const primaryMain = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
 
-  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  const [category, setCategory] = useState();
+  const [products, setProducts] = useState([]);
+  const [choosenCategory, setChoosenCategory] = useState(2);
 
   useEffect(() => {
     axios
-      .get("https://localhost:7260/api/Category")
+      .get(`https://localhost:7260/api/Category/wproducts/${choosenCategory}`)
       .then((response) => {
-        setCategories(response.data);
-        console.log(categories);
+        setProducts(response.data.products);
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [choosenCategory]);
+
+  const handleCategoryChange = (categoryId) => {
+    setChoosenCategory(categoryId);
+  };
 
   return (
     <Box>
@@ -58,14 +67,46 @@ const CategoriesPage = () => {
             flexDirection={"column"}
             marginY="1rem"
           >
-            {categories.map((category) => (
-              <CategoryListingButton 
-                categoryName = {category.name}
-              />
-            ))}
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(1)}
+              categoryName={"Reinforcement Learning"}
+            />
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(2)}
+              categoryName={"Computer Vision"}
+            />
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(3)}
+              categoryName={"Language Processing"}
+            />
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(4)}
+              categoryName={"Medical Imaging"}
+            />
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(5)}
+              categoryName={"Game AI"}
+            />
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(6)}
+              categoryName={"Customer Segmentation"}
+            />
+            <CategoryListingButton
+              onClick={() => handleCategoryChange(7)}
+              categoryName={"Others"}
+            />
           </Box>
         </Box>
-        <Box flexBasis="85%" padding="20rem"></Box>
+        <Box flexBasis="85%" display="flex" gap="1.5rem" paddingLeft="1.5rem">
+          {products.map((product) => (
+            <ProductListingWidget
+              onClick={()=>{navigate("/productDetail")}}
+              name={product.name}
+              description={product.description}
+              price = {product.price}
+            ></ProductListingWidget>
+          ))}
+        </Box>
       </Box>
     </Box>
   );

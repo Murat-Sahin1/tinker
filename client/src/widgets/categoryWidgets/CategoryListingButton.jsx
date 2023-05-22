@@ -14,7 +14,7 @@ const StyledBox = styled(Box)({
   display: "flex",
 });
 
-function CategoryListingButton({ icon, categoryName, modelCount }) {
+function CategoryListingButton({ onClick, icon, categoryName, modelCount }) {
   const theme = useTheme();
   const neutralMain = theme.palette.neutral.mediumMain;
   const neutral = theme.palette.neutral.light;
@@ -27,6 +27,7 @@ function CategoryListingButton({ icon, categoryName, modelCount }) {
 
   return (
     <StyledBox
+      onClick={onClick}
       sx={{
         borderWidth: "1px",
         boxShadow: 1,

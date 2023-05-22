@@ -85,6 +85,16 @@ namespace tinker.Persistence.Seeds
             },
             new Product
             {
+                Name="Number Identification",
+                Description="Differ the numbers",
+                Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
+                Sold = 14,
+                Price = 1831,
+                CategoryId = 2,
+                ProductStatus = Domain.Enums.ProductStatus.Active,
+            },
+            new Product
+            {
                 Name="Chat Bot",
                 Description="Simple chat bot",
                 Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },

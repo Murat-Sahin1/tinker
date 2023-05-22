@@ -7,6 +7,7 @@ import { themeSettings } from "./theme";
 import ModelLoadPage from "scenes/modelLoadPage";
 import HomePage from "scenes/homePage";
 import CategoriesPage from "scenes/categoriesPage";
+import ProductDetailPage from "scenes/productDetailPage";
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -19,6 +20,7 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/productDetail" element={<ProductDetailPage />} />
             <Route path="/modelLoad" element={<ModelLoadPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
           </Routes>

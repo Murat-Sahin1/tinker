@@ -15,9 +15,12 @@ import SellerButton from "widgets/SellerButton";
 import ClassIcon from "@mui/icons-material/Class";
 import CategoryButton from "widgets/CategoryButton";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const theme = useTheme();
@@ -33,8 +36,8 @@ const HomePage = () => {
       .get("https://localhost:7260/api/Category")
       .then((response) => {
         setCategories(response.data);
-        console.log(categories)
-        console.log(response.data)
+        console.log(categories);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -109,7 +112,11 @@ const HomePage = () => {
             </Typography>
           </Box>
           <Box marginBottom={"1rem"}>
-            <Button variant="contained" sx={{ boxShadow: 5 }}>
+            <Button
+              variant="contained"
+              sx={{ boxShadow: 5 }}
+              onClick={() => navigate(`/categories`)}
+            >
               <Typography
                 fontWeight="bold"
                 sx={{ letterSpacing: 2 }}
@@ -251,10 +258,11 @@ const HomePage = () => {
                 Categories
               </Typography>
               <Typography variant="h6">
-              Thousands of creators work as a community to solve Audio, Vision, and Language with AI.
+                Thousands of creators work as a community to solve Audio,
+                Vision, and Language with AI.
               </Typography>
               <Typography variant="h6" fontWeight={"bold"} paddingTop="10px">
-               See them all
+                See them all
               </Typography>
             </Box>
           </Box>
