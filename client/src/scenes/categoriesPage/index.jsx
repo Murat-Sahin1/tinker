@@ -100,7 +100,7 @@ const CategoriesPage = () => {
         <Box flexBasis="85%" display="flex" gap="1.5rem" paddingLeft="1.5rem">
           {products.map((product) => (
             <ProductListingWidget
-              onClick={()=>{navigate("/productDetail")}}
+              onClick={()=>{navigate("/productDetail", {state: {product}})}}
               name={product.name}
               description={product.description}
               price = {product.price}
