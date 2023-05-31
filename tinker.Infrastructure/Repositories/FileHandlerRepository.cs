@@ -39,81 +39,60 @@ namespace tinker.Infrastructure.Repositories
                     Console.Write("Error is occured while trying to upload model file.");
                     return ex.Message;
                 }
-            } else{
+            }
+            else
+            {
                 throw new Exception("Model file could not be found.");
             }
 
-            if (form.inputFile.Length > 0) 
+            if (form.inputFile.Length > 0)
             {
-                var inputFileName = fileName.ToString() + "_INPUT";
+                var inputFileName = fileName.ToString();
                 var file = form.inputFile;
                 var type = form.inputType.ToString();
-                if (type == "Image")
+                Console.WriteLine("In input");
+                try
                 {
-                    try
+                    Console.WriteLine("try");
+                    extension = "." + file.FileName.Split(".")[file.FileName.Split(".").Length - 1];
+
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type);
+                    var directoryPath = Path.GetFullPath(filePath);
+                    
+                    Console.WriteLine(directoryPath);
+
+                    if (!Directory.Exists(directoryPath))
                     {
-                        extension = "." + file.FileName.Split(".")[file.FileName.Split(".").Length - 1];
-
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/ModelInputs/ImageInput/", fileName.ToString());
-
-                        if (!Directory.Exists(filePath))
-                        {
-                            Console.Write("File upload directory couldn't be find, creating a new one...");
-                            Directory.CreateDirectory(filePath);
-                        }
-
-                        var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/ModelInputs/ImageInput/", fileName.ToString(), inputFileName + extension);
-
-                        using (var stream = new FileStream(exactPath, FileMode.Create))
-                        {
-                            await file.CopyToAsync(stream);
-                        }
+                        Console.WriteLine("file creatign");
+                        Console.Write("File upload directory couldn't be find, creating a new one...");
+                        Directory.CreateDirectory(directoryPath);
                     }
-                    catch (Exception ex)
+
+                    var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type , inputFileName + extension);
+                    Console.WriteLine(exactPath);
+
+                    using (var stream = new FileStream(exactPath, FileMode.Create))
                     {
-                        Console.Write("Error is occured while trying to upload input file.");
-                        return ex.Message;
+                        Console.WriteLine("stream");
+                        await file.CopyToAsync(stream);
                     }
-                } else if (type == "Text")
-                {
-                    try
-                    {
-                        extension = "." + file.FileName.Split(".")[file.FileName.Split(".").Length - 1];
-
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/ModelInputs/TextInput/");
-
-                        if (!Directory.Exists(filePath))
-                        {
-                            Console.Write("File upload directory couldn't be find, creating a new one...");
-                            Directory.CreateDirectory(filePath);
-                        }
-
-                        var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/ModelInputs/TextInput/", inputFileName + extension);
-
-                        using (var stream = new FileStream(exactPath, FileMode.Create))
-                        {
-                            await file.CopyToAsync(stream);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write("Error is occured while trying to upload input file.");
-                        return ex.Message;
-                    }
-                } else
-                {
-                    throw new Exception("Unsupported input type.");
                 }
-                
-            } else
+                catch (Exception ex)
+                {
+                    Console.Write("Error is occured while trying to upload input file.");
+                    return ex.Message;
+                }
+            }
+            else
             {
                 throw new Exception("Input file could not be found.");
             }
 
-            if (form.willNormalize == true) 
+            if (form.willNormalize == true)
             {
 
-            } else
+            }
+            else
             {
 
             }
