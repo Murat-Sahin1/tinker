@@ -25,7 +25,7 @@ const IconCard = ({ text, size = "150px" }) => {
       alignItems={"center"}
       border={`1px ${neutralMain} solid`}
       borderRadius={2}
-      sx={{ "&:hover": { cursor: "pointer", opacity:0.7, } }}
+      sx={{ "&:hover": { cursor: "pointer", opacity: 0.7 } }}
     >
       <img
         width={"15px"}
@@ -34,7 +34,19 @@ const IconCard = ({ text, size = "150px" }) => {
         alt="user"
         src="https://images.emojiterra.com/twitter/v13.1/512px/1f916.png"
       />
-      <Typography fontSize="13px" color={dark}>{text}</Typography>
+
+      <Typography
+        fontSize="0.8rem"
+        color={dark}
+        sx={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "calc(100% - 20px)",
+        }}
+      >
+        {text}
+      </Typography>
     </Box>
   );
 };

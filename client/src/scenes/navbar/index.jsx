@@ -107,6 +107,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="clamp(1rem, 0.5rem, 2.25rem)"
               color="primary"
+              onClick={() => navigate("/categories")}
               sx={{
                 "&:hover": {
                   color: primaryLight,

@@ -5,7 +5,7 @@ import CategoryListingButton from "widgets/categoryWidgets/CategoryListingButton
 import ProductListingWidget from "widgets/categoryWidgets/ProductListingWidget";
 import FlexBetween from "components/FlexBetween";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const CategoriesPage = () => {
   const theme = useTheme();
@@ -19,10 +19,15 @@ const CategoriesPage = () => {
   const alt = theme.palette.background.alt;
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [category, setCategory] = useState();
   const [products, setProducts] = useState([]);
   const [choosenCategory, setChoosenCategory] = useState(2);
+
+  useEffect(() => {
+    setChoosenCategory(location.state)
+    console.log('Location state changed:', location.state);
+  }, [location]);
 
   useEffect(() => {
     axios

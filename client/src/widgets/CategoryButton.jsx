@@ -14,7 +14,7 @@ const StyledBox = styled(Box)({
   display: "flex",
 });
 
-function CategoryButton({ icon, categoryName, modelCount }) {
+function CategoryButton({ isClicked, icon, categoryName, modelCount }) {
   const theme = useTheme();
   const neutralMain = theme.palette.neutral.mediumMain;
   const neutral = theme.palette.neutral.light;
@@ -27,6 +27,7 @@ function CategoryButton({ icon, categoryName, modelCount }) {
 
   return (
     <StyledBox
+      onClick = {isClicked}
       sx={{
         boxShadow: 3,
         "&:hover": {

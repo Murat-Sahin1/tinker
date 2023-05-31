@@ -44,6 +44,10 @@ const HomePage = () => {
       });
   }, []);
 
+  const handleCategoryClick = () => {
+    
+  }
+
   return (
     <Box>
       <NavBar />
@@ -277,6 +281,7 @@ const HomePage = () => {
           >
             {categories.map((category) => (
               <CategoryButton
+                isClicked={(id)=>{navigate(`/categories`, { state: category.id})}}
                 icon={"Image"}
                 categoryName={category.name}
                 modelCount={432}

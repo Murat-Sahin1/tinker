@@ -1,6 +1,6 @@
 import NavBar from "scenes/navbar";
 import { useState, useEffect } from "react";
-import { Box, Typography, useTheme, Button } from "@mui/material";
+import { Box, Typography, useTheme, Button, Divider } from "@mui/material";
 import CategoryListingButton from "widgets/categoryWidgets/CategoryListingButton";
 import ProductListingWidget from "widgets/categoryWidgets/ProductListingWidget";
 import FlexBetween from "components/FlexBetween";
@@ -72,7 +72,7 @@ const ProductDetailPage = () => {
                 <Typography fontSize={"2rem"} fontWeight={"bold"} color="">
                   {product.name}
                 </Typography>
-                <Typography fontSize={"0.9rem"} color={primaryLight}>
+                <Typography fontSize={"0.9rem"} color={primaryMain}>
                   by FinlandSoftware
                 </Typography>
               </Box>
@@ -89,10 +89,10 @@ const ProductDetailPage = () => {
             </Box>
 
             {/* Icons */}
-            <Box display="flex" gap="1rem">
+            <Box display="flex" gap="0.3rem">
               <IconCard text="Image Transformer" />
-              <IconCard text="Image Transformer" />
-              <IconCard text="Image Transformer" />
+              <IconCard text="Top Rated" />
+              <IconCard text="Recommended" />
               <IconCard text="Image Transformer" />
               <IconCard text="Image Transformer" />
             </Box>
@@ -104,7 +104,11 @@ const ProductDetailPage = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Button display="flex" width="3rem" variant="contained">
+            <Button
+              style={{ textTransform: "none", padding: "0.5rem 2.3rem" }}
+              width="100%"
+              variant="contained"
+            >
               <Typography fontSize="1.3rem">BUY</Typography>
             </Button>
           </Box>
@@ -290,7 +294,7 @@ const ProductDetailPage = () => {
               width="100%"
               height="36rem"
               backgroundColor={alt}
-              borderRadius={3}
+              borderRadius={2}
               display="flex"
               flexDirection={"column"}
               boxShadow={5}
@@ -437,18 +441,22 @@ const ProductDetailPage = () => {
           </Box>
         </Box>
 
-        <Box width="25%" backgroundColor={alt}>
+        <Box width="25%" backgroundColor={alt} borderRadius={2} boxShadow={5}>
           <Box display="flex" justifyContent="center" alignItems={"center"}>
             <Typography variant="h2" paddingTop={"1rem"} fontWeight={"bold"}>
               Metrics
             </Typography>
           </Box>
+          <Box paddingX="2rem">
+            <Divider />
+          </Box>
           <Box display="flex" padding="1rem" justifyContent={"space-evenly"}>
             <Box
               display="flex"
               justifyContent={"center"}
               alignItems={"center"}
               flexDirection={"column"}
+              width={"20%"}
             >
               <Typography variant="h4">Accuracy</Typography>
               <InfoIcon />
@@ -459,6 +467,31 @@ const ProductDetailPage = () => {
               justifyContent={"center"}
               alignItems={"center"}
               flexDirection={"column"}
+              width={"20%"}
+            >
+              <Typography variant="h4">Loss</Typography>
+              <InfoIcon />
+              <Box>8.3</Box>
+            </Box>
+          </Box>
+          <Box display="flex" padding="1rem" justifyContent={"space-evenly"}>
+            <Box
+              display="flex"
+              justifyContent={"center"}
+              alignItems={"center"}
+              flexDirection={"column"}
+              width={"20%"}
+            >
+              <Typography variant="h4">Recall</Typography>
+              <InfoIcon />
+              <Box>8.3</Box>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent={"center"}
+              alignItems={"center"}
+              flexDirection={"column"}
+              width={"20%"}
             >
               <Typography variant="h4">Accuracy</Typography>
               <InfoIcon />
@@ -471,6 +504,7 @@ const ProductDetailPage = () => {
               justifyContent={"center"}
               alignItems={"center"}
               flexDirection={"column"}
+              width={"20%"}
             >
               <Typography variant="h4">Accuracy</Typography>
               <InfoIcon />
@@ -481,28 +515,7 @@ const ProductDetailPage = () => {
               justifyContent={"center"}
               alignItems={"center"}
               flexDirection={"column"}
-            >
-              <Typography variant="h4">Accuracy</Typography>
-              <InfoIcon />
-              <Box>8.3</Box>
-            </Box>
-          </Box>
-          <Box display="flex" padding="1rem" justifyContent={"space-evenly"}>
-            <Box
-              display="flex"
-              justifyContent={"center"}
-              alignItems={"center"}
-              flexDirection={"column"}
-            >
-              <Typography variant="h4">Accuracy</Typography>
-              <InfoIcon />
-              <Box>8.3</Box>
-            </Box>
-            <Box
-              display="flex"
-              justifyContent={"center"}
-              alignItems={"center"}
-              flexDirection={"column"}
+              width={"20%"}
             >
               <Typography variant="h4">Accuracy</Typography>
               <InfoIcon />
