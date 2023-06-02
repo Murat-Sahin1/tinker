@@ -100,9 +100,9 @@ namespace tinker.Infrastructure.Repositories
             return fileName.ToString();
         }
 
-        public string ExecuteModel(string modelName, List<string> inputNames)
+        public string ExecuteModel(string modelName, List<string> inputNames, string inputType)
         {
-            return PythonScriptHandler.Exec_Process(modelName, inputNames);
+            return PythonScriptHandler.Exec_Process(modelName, inputNames, inputType);
         }
     }
 }

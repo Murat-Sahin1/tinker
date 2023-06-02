@@ -10,6 +10,6 @@ namespace tinker.Application.Interfaces.Repositories
     public interface IFileHandlerRepository
     {
         Task<string> UploadFormWithFile(FileUpload form);
-        string ExecuteModel(string modelName, List<string> inputNames);
+        string ExecuteModel(string modelName, List<string> inputNames, string InputType);
     }
 }

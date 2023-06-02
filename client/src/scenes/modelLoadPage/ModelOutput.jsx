@@ -20,10 +20,12 @@ import axios from "axios";
 
 const modelSchema = yup.object().shape({
   modelID: yup.string().required("Required"),
+  inputType: yup.string().required("Required"),
 });
 
 const initialValues = {
   modelID: "",
+  inputType: "",
 };
 
 const ModelOutput = () => {
@@ -32,10 +34,11 @@ const ModelOutput = () => {
   const [output, setOutput] = useState("");
   var outputSplitted = "";
 
-  const getModelOutput = async (values, onSubmitProps) => {
+  const getModelOutput = async (values) => {
     const formData = new FormData();
     formData.append("FileName", values.modelID);
     formData.append("InputName", values.modelID);
+    formData.append("InputType", values.inputType)
     try {
       console.log("method");
       const res = await axios.post(
@@ -49,9 +52,9 @@ const ModelOutput = () => {
     }
   };
 
-  const handleFormSubmit = async (values, onSubmitProps) => {
+  const handleFormSubmit = async (values) => {
     console.log(values);
-    await getModelOutput(values, onSubmitProps);
+    await getModelOutput(values);
   };
 
   return (
@@ -78,14 +81,24 @@ const ModelOutput = () => {
             justifyContent={"center"}
             alignItems={"center"}
             marginTop={"2rem"}
+            gap={"0.5rem"}
           >
             <>
               <TextField
                 label="ModelID"
+                
                 onBlur={handleBlur} // Handles when clicked away
                 onChange={handleChange} //Handles when typing
                 value={values.modelID}
                 name="modelID"
+                sx={{ width: "65%", justifyContent: "center" }}
+              />
+              <TextField
+                label="Input Type"
+                onBlur={handleBlur} // Handles when clicked away
+                onChange={handleChange} //Handles when typing
+                value={values.inputType}
+                name="inputType"
                 sx={{ width: "65%", justifyContent: "center" }}
               />
               <Button
@@ -114,7 +127,7 @@ const ModelOutput = () => {
               </Button>
               
                 {output.split("\n").map((line, index) => (
-                  <Typography margin="1 rem">{line}</Typography>
+                  <Typography margin="1rem">{line}</Typography>
                 ))}
               
             </>

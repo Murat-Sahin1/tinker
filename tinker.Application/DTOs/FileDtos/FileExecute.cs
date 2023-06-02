@@ -10,5 +10,6 @@ namespace tinker.Application.DTOs.FileDtos
     {
         public string FileName { get; set; }
         public List<string> InputName { get; set; }
+        public string InputType { get; set; }
     }
 }

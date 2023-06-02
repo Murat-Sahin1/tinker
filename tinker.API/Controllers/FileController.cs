@@ -26,7 +26,7 @@ namespace tinker.API.Controllers
         [HttpPost("Execute")]
         public string ReadFileOutput([FromForm] FileExecute executingDetails)
         {
-            return _fileHandlerRepository.ExecuteModel(executingDetails.FileName, executingDetails.InputName);
+            return _fileHandlerRepository.ExecuteModel(executingDetails.FileName, executingDetails.InputName, executingDetails.InputType);
         }
     }
 } 
