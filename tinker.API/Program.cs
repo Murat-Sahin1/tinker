@@ -1,15 +1,19 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Configuration;
+using tinker.API.Extensions;
 using tinker.Application;
 using tinker.Application.Interfaces.Repositories;
+using tinker.Domain.Entities.Identity;
 using tinker.Infrastructure;
 using tinker.Persistence;
+using tinker.Persistence.Identity;
 using tinker.Persistence.Seeds;
-
-
+using tinker.Persistence.Seeds.IdentitySeeds;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -48,6 +52,8 @@ builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 
+//builder.Services.AddIdentityServices(builder.Configuration);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -67,7 +73,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowOrigin");
 //app.UseHttpsRedirection();
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -75,6 +81,9 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+
 
     try
     {
@@ -84,6 +93,8 @@ using (var scope = app.Services.CreateScope())
         await DbInitializer.seedCategoryData(categoryRepository);
         await DbInitializer.seedProductData(productRepository, categoryRepository);
 
+        await identityContext.Database.MigrateAsync(); // same as database-update
+        await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
     }
     catch (Exception ex)
     {

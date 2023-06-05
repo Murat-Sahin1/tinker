@@ -51,7 +51,7 @@ const ModelLoadPage = () => {
             <Form onValueChange={handleModelNameChange}></Form>
           </Box>
         </Box>
-        {/* FRIENDS-LIST */}
+        {/* MODEL-OUTPUT */}
 
         <Box flexBasis="50%">
           <Box

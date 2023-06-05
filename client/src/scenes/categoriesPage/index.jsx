@@ -103,8 +103,9 @@ const CategoriesPage = () => {
           </Box>
         </Box>
         <Box flexBasis="85%" display="flex" gap="1.5rem" paddingLeft="1.5rem">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <ProductListingWidget
+              key = {index}
               onClick={()=>{navigate("/productDetail", {state: {product}})}}
               name={product.name}
               description={product.description}

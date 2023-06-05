@@ -21,13 +21,13 @@ import axios from "axios";
 const modelSchema = yup.object().shape({
   modelFile: yup.string().required("Required"),
   inputType: yup.string().required("Required"),
-  inputFile: yup.string().required("Required"),
+  inputFiles: yup.string().required("Required"),
 });
 
 const initialValues = {
   modelFile: "",
   inputType: "",
-  inputFile: ""
+  inputFiles: [],
 };
 
 const Form = ({ onModelNameChange }) => {
@@ -35,7 +35,6 @@ const Form = ({ onModelNameChange }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const [file, setFile] = useState();
   const [modelName, setModelName] = useState();
 
   const handleModelNameChange = (modelName) => {
@@ -48,7 +47,7 @@ const Form = ({ onModelNameChange }) => {
     const formData = new FormData();
     formData.append("modelFile", values.modelFile);
     formData.append("inputType", values.inputType);
-    formData.append("inputFile", values.inputFile);
+    formData.append("inputFiles", values.inputFiles);
     console.log(formData);
     try {
       const res = await axios.post(
@@ -114,7 +113,6 @@ const Form = ({ onModelNameChange }) => {
                   multiple={false}
                   onDrop={(acceptedFiles) => {
                     setFieldValue("modelFile", acceptedFiles[0]);
-                    setFile(acceptedFiles[0]);
                   }}
                 >
                   {({ getRootProps, getInputProps }) => (
@@ -145,10 +143,11 @@ const Form = ({ onModelNameChange }) => {
               >
                 <Dropzone
                   acceptedFiles=".jpeg,.jpg,.png"
-                  multiple={false}
+                  multiple={true}
                   onDrop={(acceptedFiles) => {
-                    setFieldValue("inputFile", acceptedFiles[0]);
-                    setFile(acceptedFiles[0]);
+                    setFieldValue("inputFiles", acceptedFiles);
+                    console.log(values.inputFiles);
+                    console.log(acceptedFiles);
                   }}
                 >
                   {({ getRootProps, getInputProps }) => (
@@ -159,13 +158,22 @@ const Form = ({ onModelNameChange }) => {
                       sx={{ "&:hover": { cursor: "pointer" } }}
                     >
                       <input {...getInputProps()} />
-                      {!values.inputFile ? (
-                        <p>Add Input File Here</p>
+                      {values.inputFiles.length === 0 ? (
+                        <p>Provide 10 input files of the stated type.</p>
                       ) : (
-                        <FlexBetween>
-                          <Typography>{values.inputFile.name}</Typography>
-                          <EditOutlinedIcon />
-                        </FlexBetween>
+                        <Box display="flex" gap="0.5rem" alignContent={"center"} alignItems={"center"} justifyContent={"center"}>
+                          <Box display="block">
+                            {values.inputFiles.map((inputFile, index) => (
+                              <Typography key={index}>
+                                {inputFile.name}
+                              </Typography>
+                            ))}
+                          </Box>
+                          <Box>
+                            {" "}
+                            <EditOutlinedIcon />
+                          </Box>
+                        </Box>
                       )}
                     </Box>
                   )}
@@ -199,23 +207,19 @@ const Form = ({ onModelNameChange }) => {
             >
               Click here to get assistance.
             </Typography>
-            {modelName && (<Typography
-              sx={{
-                marginTop: "2rem",
-                fontSize: "1rem",
-                color: "#50C878",
-                "&:hover": {},
-              }}
-            >
-              <Box>
-              Successful! Your Model ID: 
-              </Box>
-              <Box>
-              {modelName}
-              </Box>
-              
-            </Typography>)}
-            
+            {modelName && (
+              <Typography
+                sx={{
+                  marginTop: "2rem",
+                  fontSize: "1rem",
+                  color: "#50C878",
+                  "&:hover": {},
+                }}
+              >
+                <Box>Successful! Your Model ID:</Box>
+                <Box>{modelName}</Box>
+              </Typography>
+            )}
           </Box>
         </form>
       )}

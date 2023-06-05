@@ -12,7 +12,7 @@ namespace tinker.Infrastructure.Repositories
             Guid fileName = Guid.NewGuid();
             Console.WriteLine(form);
             string extension = "";
-            if (form.modelFile.Length > 0)
+            if (form.modelFile.Length > 0) // Model loading part
             {
                 var file = form.modelFile;
                 try
@@ -45,7 +45,7 @@ namespace tinker.Infrastructure.Repositories
                 throw new Exception("Model file could not be found.");
             }
 
-            if (form.inputFile.Length > 0)
+            if (form.inputFile.Length > 0) // Input file loading part 
             {
                 var inputFileName = fileName.ToString();
                 var file = form.inputFile;
