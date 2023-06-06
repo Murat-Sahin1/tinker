@@ -15,7 +15,7 @@ namespace tinker.Persistence
         public AppIdentityDbContext CreateDbContext(string[] args)
         {
             DbContextOptionsBuilder<AppIdentityDbContext> dbContextOptionsBuilder = new();
-            dbContextOptionsBuilder.UseSqlServer("Server=DESKTOP-CMFM3SG;Database=IdentityDb;Trusted_Connection=True;TrustServerCertificate=True");
+            dbContextOptionsBuilder.UseSqlServer("Server=DESKTOP-CMFM3SG;Database=tinkerIdentityDb;Trusted_Connection=True;TrustServerCertificate=True");
             return new(dbContextOptionsBuilder.Options);
         }
     }

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Options;
@@ -48,6 +50,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
     })
     .Build();
 
+builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();

@@ -10,6 +10,10 @@ using tinker.Persistence.Configurations;
 using tinker.Persistence.Contexts;
 using tinker.Persistence.Identity;
 using tinker.Persistence.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace tinker.Persistence
 {
@@ -20,26 +24,10 @@ namespace tinker.Persistence
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(_settings.ConnectionStrings["InMemoryDatabase"]));
 
-            services.AddDbContext<AppIdentityDbContext>(opt =>
-            {
-                opt.UseSqlServer(_settings.ConnectionStrings["SqlServerConnection"]);
-            });
-
-            services.AddIdentityCore<AppUser>(opt =>
-            {
-                // identity options
-            })
-            .AddEntityFrameworkStores<AppIdentityDbContext>()
-            .AddSignInManager<SignInManager<AppUser>>();
-
-            services.AddAuthentication();
-            services.AddAuthorizationCore();
-
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ISellerRepository, SellerRepository>();
-
         }
     }
 }

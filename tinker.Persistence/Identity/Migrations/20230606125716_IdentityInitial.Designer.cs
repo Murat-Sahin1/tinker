@@ -12,7 +12,7 @@ using tinker.Persistence.Identity;
 namespace tinker.Persistence.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20230605215016_IdentityInitial")]
+    [Migration("20230606125716_IdentityInitial")]
     partial class IdentityInitial
     {
         /// <inheritdoc />
