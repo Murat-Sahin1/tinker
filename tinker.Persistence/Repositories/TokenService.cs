@@ -38,7 +38,7 @@ namespace tinker.Infrastructure.Repositories
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = creds,
-                Issuer = _configuration["Token:Issuer"]
+                Issuer = _configuration["ApplicationSettings:Token:Issuer"]
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
