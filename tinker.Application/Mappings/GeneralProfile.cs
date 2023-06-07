@@ -31,7 +31,7 @@ namespace tinker.Application.Mappings
 
             CreateMap<Seller, SellerReadDto>();
 
-            CreateMap<Address, AddressDto>();
+            CreateMap<Address, AddressDto>().ReverseMap();
         }
     }
 }
