@@ -14,12 +14,11 @@ namespace tinker.API.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
+            // This method is basically registering services into service collection 
             services.AddDbContext<AppIdentityDbContext>(opt =>
             {
                 opt.UseSqlServer(config["ApplicationSettings:ConnectionStrings:SqlServerConnection"]);
             });
-
-            services.AddScoped<ITokenService, TokenService>();
 
             services.AddIdentityCore<AppUser>(opt =>
             {
@@ -27,6 +26,8 @@ namespace tinker.API.Extensions
             })
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();
+
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -36,7 +37,8 @@ namespace tinker.API.Extensions
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["ApplicationSettings:Token:Key"])),
                         ValidIssuer = config["ApplicationSettings:Token:Issuer"],
-                        ValidateIssuer = true
+                        ValidateIssuer = true,
+                        ValidateAudience = false
                     };
                 });
 
