@@ -45,16 +45,17 @@ namespace tinker.Infrastructure.Repositories
                 throw new Exception("Model file could not be found.");
             }
 
-            if (form.inputFile.Length > 0) // Input file loading part 
+            if (form.inputFiles.Length > 0) // Input file loading part 
             {
+               
                 var inputFileName = fileName.ToString();
-                var file = form.inputFile;
+                var file = form.inputFiles;
                 var type = form.inputType.ToString();
-                Console.WriteLine("In input");
+                Console.WriteLine("In input", file);
                 try
                 {
                     Console.WriteLine("try");
-                    extension = "." + file.FileName.Split(".")[file.FileName.Split(".").Length - 1];
+                    extension = "." + file[0].FileName.Split(".")[file[0].FileName.Split(".").Length - 1];
 
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type);
                     var directoryPath = Path.GetFullPath(filePath);
@@ -68,13 +69,19 @@ namespace tinker.Infrastructure.Repositories
                         Directory.CreateDirectory(directoryPath);
                     }
 
-                    var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type , inputFileName + extension);
-                    Console.WriteLine(exactPath);
-
-                    using (var stream = new FileStream(exactPath, FileMode.Create))
+                    int i = 0;
+                    foreach(var inputFile in file)
                     {
-                        Console.WriteLine("stream");
-                        await file.CopyToAsync(stream);
+                        var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type, i + extension);
+                        i++;
+
+                        Console.WriteLine(exactPath);
+
+                        using (var stream = new FileStream(exactPath, FileMode.Create))
+                        {
+                            Console.WriteLine("stream");
+                            await inputFile.CopyToAsync(stream);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -87,7 +94,43 @@ namespace tinker.Infrastructure.Repositories
             {
                 throw new Exception("Input file could not be found.");
             }
+            
+            if(form.csvFile.Length > 0)
+            {
+                Console.WriteLine("inside the function");
+                var file = form.csvFile;
+                try
+                {
+                    extension = "." + file.FileName.Split(".")[file.FileName.Split(".").Length - 1];
 
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/yValues/");
+                    var directoryPath = Path.GetFullPath(filePath);
+
+                    Console.WriteLine(file.Name);
+                    if (!Directory.Exists(directoryPath))
+                    {
+                        Console.WriteLine("File upload directory couldn't be found, creating a new one...");
+                        Directory.CreateDirectory(directoryPath);
+                    }
+
+                    var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/yValues/" + file.FileName);
+
+                    using (var stream = new FileStream(exactPath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("Error is occured while trying to upload model file.");
+                    return ex.Message;
+                }
+            }
+            else
+            {
+                throw new Exception("csv file could not be found.");
+            }
+           
             if (form.willNormalize == true)
             {
 
@@ -96,6 +139,7 @@ namespace tinker.Infrastructure.Repositories
             {
 
             }
+
 
             return fileName.ToString();
         }

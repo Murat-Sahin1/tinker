@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { Formik } from "formik";
+import { Formik, setIn } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -21,7 +21,9 @@ import axios from "axios";
 const modelSchema = yup.object().shape({
   modelFile: yup.string().required("Required"),
   inputType: yup.string().required("Required"),
-  inputFiles: yup.string().required("Required"),
+  inputFiles: yup
+    .array()
+    .of(yup.mixed().required("Please select at least one file.")),
 });
 
 const initialValues = {
@@ -36,6 +38,7 @@ const Form = ({ onModelNameChange }) => {
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [modelName, setModelName] = useState();
+  const [inputFiles, setInputFiles] = useState([]);
 
   const handleModelNameChange = (modelName) => {
     setModelName(modelName);
@@ -47,21 +50,27 @@ const Form = ({ onModelNameChange }) => {
     const formData = new FormData();
     formData.append("modelFile", values.modelFile);
     formData.append("inputType", values.inputType);
-    formData.append("inputFiles", values.inputFiles);
+    formData.append("inputFiles", inputFiles);
+    
+    const config = {
+      headers:{ 'content-type' : 'multipart/form-data' }
+    }
+    
     console.log(formData);
     try {
       const res = await axios.post(
-        "http://localhost:5074/api/File/Upload",
-        formData
+        "https://localhost:7260/api/File/Upload",
+        formData,
+        config
       );
       handleModelNameChange(res.data);
-      console.log(res);
     } catch (ex) {
       console.log(ex);
     }
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
+    console.log("handleformsubmit");
     console.log(values);
     await sendModelFile(values, onSubmitProps);
   };
@@ -146,8 +155,9 @@ const Form = ({ onModelNameChange }) => {
                   multiple={true}
                   onDrop={(acceptedFiles) => {
                     setFieldValue("inputFiles", acceptedFiles);
+                    setInputFiles(acceptedFiles);
+                    console.log("inputfilessssss");
                     console.log(values.inputFiles);
-                    console.log(acceptedFiles);
                   }}
                 >
                   {({ getRootProps, getInputProps }) => (
