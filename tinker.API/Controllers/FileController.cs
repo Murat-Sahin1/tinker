@@ -28,10 +28,10 @@ namespace tinker.API.Controllers
         {
             return _fileHandlerRepository.ExecuteModel(executingDetails.FileName, executingDetails.InputName, executingDetails.InputType);
         }
-        [HttpPost("Evaluation")]
-        public EvaluationDto GetEvaluation(string modelName)
+        [HttpGet("evaluation/{modelId}")]
+        public EvaluationDto GetEvaluation(string modelId)
         {
-            return _fileHandlerRepository.GetEvaluation(modelName);
+            return _fileHandlerRepository.GetEvaluation(modelId);
         }
     }
 } 
