@@ -15,6 +15,8 @@ namespace tinker.Domain.Entities
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
+        [Required]
+        public string ModelID { get; set; }
         public ICollection<Image> Images { get; set; }
         public int Sold { get; set; }
         [Required]

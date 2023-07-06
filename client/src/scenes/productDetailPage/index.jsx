@@ -25,10 +25,12 @@ const ProductDetailPage = () => {
   const location = useLocation();
   const { product } = location.state;
 
+
   const [selectedButton, setSelectedButton] = useState(1);
 
   const handleButtonClick = (buttonId) => {
     setSelectedButton(buttonId);
+    console.log(product);
   };
 
   return (

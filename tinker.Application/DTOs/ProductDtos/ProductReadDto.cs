@@ -14,6 +14,8 @@ namespace tinker.Application.DTOs.ProductDtos
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
+        [Required]
+        public string ModelID { get; set; }
         public ICollection<ImageDto> Images { get; set; }
         public int Sold { get; set; }
         [Required]

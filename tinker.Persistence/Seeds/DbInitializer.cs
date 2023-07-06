@@ -67,6 +67,7 @@ namespace tinker.Persistence.Seeds
             {
                 Name="Cat and Dog Identificator",
                 Description="A model that simply detects dogs and cats and identifies them.",
+                ModelID = "15bed8ec-54c9-44db-a50f-d577217d5014",
                 Images = new List<Image>{ new Image { Url = "https://flxt.tmsimg.com/assets/p22041592_i_v13_aa.jpg"}},
                 Sold = 14,
                 Price = 1831,
@@ -77,6 +78,7 @@ namespace tinker.Persistence.Seeds
             {
                 Name="Pathfinding Model",
                 Description="Simple chat bot",
+                ModelID = "9b59ecb4-3756-4d78-8352-aa07ded0571f",
                 Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
                 Sold = 14,
                 Price = 1831,
@@ -87,6 +89,7 @@ namespace tinker.Persistence.Seeds
             {
                 Name="Number Identification",
                 Description="Differ the numbers",
+                ModelID = "7f305904-4454-4083-8f54-55744f1c79cd",
                 Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
                 Sold = 14,
                 Price = 1831,
@@ -97,6 +100,7 @@ namespace tinker.Persistence.Seeds
             {
                 Name="Chat Bot",
                 Description="Simple chat bot",
+                ModelID = "2891b90e-0698-4c92-8263-e671f101a13e",
                 Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
                 Sold = 14,
                 Price = 1831,
@@ -107,6 +111,7 @@ namespace tinker.Persistence.Seeds
             {
                 Name="Blood Cell Identification",
                 Description="Simple chat bot",
+                ModelID = "9949f73c-921a-41c7-9665-e1eba160a4e1",
                 Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
                 Sold = 393,
                 Price = 1831,
@@ -117,6 +122,7 @@ namespace tinker.Persistence.Seeds
             {
                 Name="Race Game Ai",
                 Description="Getting better at racing per generation, ",
+                ModelID = "dc538890-ef57-4275-808d-eba462105622",
                 Images = new List<Image>{ new Image { Url = "https://decider.com/wp-content/uploads/2022/05/LOVE-DEATH-AND-ROBOTS-SEASON-3-NETFLIX-REVIEW.jpg?quality=75&strip=all" } },
                 Sold = 393,
                 Price = 1831,
