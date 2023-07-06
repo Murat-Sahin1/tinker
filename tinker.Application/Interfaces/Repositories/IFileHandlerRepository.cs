@@ -11,5 +11,6 @@ namespace tinker.Application.Interfaces.Repositories
     {
         Task<string> UploadFormWithFile(FileUpload form);
         string ExecuteModel(string modelName, List<string> inputNames, string InputType);
+        EvaluationDto GetEvaluation(string modelName);
     }
 }

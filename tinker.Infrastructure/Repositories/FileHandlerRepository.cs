@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using Newtonsoft.Json;
+using System.Reflection.Metadata.Ecma335;
 using tinker.Application.DTOs.FileDtos;
 using tinker.Application.Interfaces.Repositories;
 using tinker.Infrastructure.ScriptHandlers;
@@ -47,7 +48,7 @@ namespace tinker.Infrastructure.Repositories
 
             if (form.inputFiles.Length > 0) // Input file loading part 
             {
-               
+
                 var inputFileName = fileName.ToString();
                 var file = form.inputFiles;
                 var type = form.inputType.ToString();
@@ -59,7 +60,7 @@ namespace tinker.Infrastructure.Repositories
 
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type);
                     var directoryPath = Path.GetFullPath(filePath);
-                    
+
                     Console.WriteLine(directoryPath);
 
                     if (!Directory.Exists(directoryPath))
@@ -70,7 +71,7 @@ namespace tinker.Infrastructure.Repositories
                     }
 
                     int i = 0;
-                    foreach(var inputFile in file)
+                    foreach (var inputFile in file)
                     {
                         var exactPath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + fileName.ToString() + "/InputFiles/" + type, i + extension);
                         i++;
@@ -94,8 +95,8 @@ namespace tinker.Infrastructure.Repositories
             {
                 throw new Exception("Input file could not be found.");
             }
-            
-            if(form.csvFile.Length > 0)
+
+            if (form.csvFile.Length > 0)
             {
                 Console.WriteLine("inside the function");
                 var file = form.csvFile;
@@ -130,7 +131,7 @@ namespace tinker.Infrastructure.Repositories
             {
                 throw new Exception("csv file could not be found.");
             }
-           
+
             if (form.willNormalize == true)
             {
 
@@ -147,6 +148,27 @@ namespace tinker.Infrastructure.Repositories
         public string ExecuteModel(string modelName, List<string> inputNames, string inputType)
         {
             return PythonScriptHandler.Exec_Process(modelName, inputNames, inputType);
+        }
+
+        public EvaluationDto GetEvaluation(string modelName)
+        {
+            EvaluationDto evaluation = null;
+            var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "../tinker.Infrastructure/AiModelFiles/" + modelName + "/Evaluation/InitialEvaluation/InitialEvaluation.json");
+
+            if (!Directory.Exists(jsonFilePath))
+            {
+                using (StreamReader file = File.OpenText(jsonFilePath))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    evaluation = (EvaluationDto)serializer.Deserialize(file, typeof(EvaluationDto));
+                }
+                return evaluation;
+            }
+            else
+            {
+                Console.WriteLine("Initial evaluation does not exist.");
+                return evaluation;
+            }
         }
     }
 }

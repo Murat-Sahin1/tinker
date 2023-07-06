@@ -28,5 +28,10 @@ namespace tinker.API.Controllers
         {
             return _fileHandlerRepository.ExecuteModel(executingDetails.FileName, executingDetails.InputName, executingDetails.InputType);
         }
+        [HttpPost("Evaluation")]
+        public EvaluationDto GetEvaluation(string modelName)
+        {
+            return _fileHandlerRepository.GetEvaluation(modelName);
+        }
     }
 } 
